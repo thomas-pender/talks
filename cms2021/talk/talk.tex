@@ -1,0 +1,795 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{natbib}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\M}{A}
+\newcommand{\w}{\mathrm{W}}
+\newcommand{\C}{\mathscr{C}}
+\newcommand{\wt}{\mathrm{wt}}
+\newcommand{\bgw}{\mathrm{BGW}}
+\newcommand{\gf}{\mathrm{GF}}
+\newcommand{\tr}{\mathrm{Tr}_{F/K}}
+
+\newcommand{\rred}[1]{\textcolor{red}{#1}}
+\newcommand{\ggreen}[1]{\textcolor{green}{#1}}
+\newcommand{\bblue}[1]{\textcolor{blue}{#1}}
+
+\title[BGWs and Codes]{Balanced Generalized Weighing Matrices and Optimal Codes}
+%\subtitle{}
+\author[T. Pender]{Thomas Pender}
+\institute[U of L]{University of Lethbridge\\Department of Mathematics and Computer Science}
+\date[CMS Dec 2021]{Canadian Mathematical Society Winter Meeting\\Decemeber 2021}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+
+ \titlepage
+ \centering{\scriptsize $^{***}$Joint work with Hadi Kharaghani, Sho Suda, Vlad Zatiev}
+\end{frame}
+
+\begin{frame}{Summary}
+ \begin{itemize}
+  \item Constant weight error-correcting codes.
+  \item Balanced generalized weighing matrices ($BGW$s).
+  \item Use $BGW$s to construct optimal constant weight codes.
+ \end{itemize}
+ 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Codes}
+
+ \begin{itemize}
+  \item A finite collection of ``strings'' (say $\C$) of given length over a given finite alphabet (say $\A$).
+  \item $\A$ has 0.
+  \item Does not assume that $\A$ is endowed with an arithmetic.
+  \item Usually take $\A = GF(q)$.
+ \end{itemize}
+
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Codes}
+
+ \begin{itemize}
+  \item Take $\A = GF(5) = \{0, 1, \omega, \omega^2, \omega^3\}$, where $\omega$ is some primitive element.
+ \end{itemize}
+ \pause
+ \[
+  \begin{array}{cccccc}
+\omega^3&1&\omega^3&0&1&1\\ 
+\omega&\omega^3&1&\omega^3&0&1
+  \end{array}
+ \]
+ 
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Codes}
+
+ \begin{itemize}
+  \item Take $\A = GF(5) = \{0, 1, \omega, \omega^2, \omega^3\}$, where $\omega$ is some primitive element.
+ \end{itemize}
+ 
+ \[
+ \underbrace{
+  \begin{array}{cccccc}
+\omega^3&1&\omega^3&0&1&1\\ 
+\omega&\omega^3&1&\omega^3&0&1
+  \end{array}}_{6}
+ \]
+ \begin{itemize}
+  \item Length 6 ($n=6$).
+ \end{itemize}
+ 
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\begin{frame}{Codes}
+
+ \begin{itemize}
+  \item Take $\A = GF(5) = \{0, 1, \omega, \omega^2, \omega^3\}$, where $\omega$ is some primitive element.
+ \end{itemize}
+ \[
+ 2 \hspace{3mm}
+  \Big\{
+  \begin{array}{cccccc}
+\omega^3&1&\omega^3&0&1&1\\ 
+\omega&\omega^3&1&\omega^3&0&1
+  \end{array}
+  %\right\}
+ \]
+ \begin{itemize}
+  \item Number of codewords is 2 ($M=2$).
+ \end{itemize}
+ 
+ \end{frame}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Codes}
+ 
+ \begin{itemize}
+  \item A finite collection of ``strings'' (say $\C$) of given length over a given finite alphabet (say $\A$).
+  \item Take $\A = GF(5)$, where $\omega$ is some primitive element.
+ \end{itemize}
+ 
+ \[
+  \begin{array}{cccccc}
+\rred{\omega^3} & \rred{1} & \rred{\omega^3} & 0 & \rred{1} & \rred{1} \\
+\omega & \omega^3 & 1 & \omega^3 & 0 & 1
+  \end{array}
+ \]
+ 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Codes}
+
+ \begin{itemize}
+  \item A finite collection of ``strings'' (say $\C$) of given length over a given finite alphabet (say $\A$).
+  \item Take $\A = GF(5)$, where $\omega$ is some primitive element.
+ \end{itemize}
+ 
+ \[
+  \begin{array}{cccccc}
+\omega^3 & 1 & \omega^3 & 0 & 1 & 1 \\ 
+\rred{\omega} & \rred{\omega^3} & \rred{1} & \rred{\omega^3} & 0 & \rred{1}
+  \end{array}
+ \]
+
+ \end{frame}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Codes}
+ 
+ \begin{itemize}
+  \item A finite collection of ``strings'' (say $\C$) of given length over a given finite alphabet (say $\A$).
+  \item Take $\A = GF(5)$, where $\omega$ is some primitive element.
+ \end{itemize}
+ 
+ \[
+  \begin{array}{cccccc}
+\rred{\omega^3} & \rred{1} & \rred{\omega^3} & 0 & \rred{1} & \rred{1} \\
+\rred{\omega} & \rred{\omega^3} & \rred{1} & \rred{\omega^3} & 0 & \rred{1}
+  \end{array}
+ \]
+ 
+ \begin{itemize}
+  \item \rred{Constant weight 5.} ($w=5$)
+ \end{itemize}
+ 
+ \end{frame}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Codes}
+ 
+ \begin{itemize}
+  \item A finite collection of ``strings'' (say $\C$) of given length over a given finite alphabet (say $\A$).
+  \item Take $\A = GF(5)$ and $\omega$ some primitive element.
+ \end{itemize}
+ 
+ \[
+  \begin{array}{cccccc}
+\ggreen{\omega^3} & 1 & \omega^3 & 0 & 1 & 1 \\
+\ggreen{\omega} & \omega^3 & 1 & \omega^3 & 0 & 1
+  \end{array}
+ \]
+ 
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\begin{frame}{Codes}
+ 
+ \begin{itemize}
+  \item A finite collection of ``strings'' (say $\C$) of given length over a given finite alphabet (say $\A$).
+  \item Take $\A = GF(5)$ and $\omega$ some primitive element.
+ \end{itemize}
+ 
+ \[
+  \begin{array}{cccccc}
+\omega^3 & \ggreen{1} & \omega^3 & 0 & 1 & 1 \\
+\omega & \ggreen{\omega^3} & 1 & \omega^3 & 0 & 1
+  \end{array}
+ \]
+ 
+ \end{frame}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\begin{frame}{Codes}
+ 
+ \begin{itemize}
+  \item A finite collection of ``strings'' (say $\C$) of given length over a given finite alphabet (say $\A$).
+  \item Take $\A = GF(5)$ and $\omega$ some primitive element.
+ \end{itemize}
+ 
+ \[
+  \begin{array}{cccccc}
+\omega^3 & 1 & \ggreen{\omega^3} & 0 & 1 & 1 \\
+\omega & \omega^3 & \ggreen{1} & \omega^3 & 0 & 1
+  \end{array}
+ \]
+ 
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+  \begin{frame}{Codes}
+ 
+ \begin{itemize}
+  \item A finite collection of ``strings'' (say $\C$) of given length over a given finite alphabet (say $\A$).
+  \item Take $\A = GF(5)$ and $\omega$ some primitive element.
+ \end{itemize}
+ 
+ \[
+  \begin{array}{cccccc}
+\omega^3 & 1 & \omega^3 & \ggreen{0} & 1 & 1 \\
+\omega & \omega^3 & 1 & \ggreen{\omega^3} & 0 & 1
+  \end{array}
+ \]
+ 
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+  \begin{frame}{Codes}
+ 
+ \begin{itemize}
+  \item A finite collection of ``strings'' (say $\C$) of given length over a given finite alphabet (say $\A$).
+  \item Take $\A = GF(5)$ and $\omega$ some primitive element.
+ \end{itemize}
+ 
+ \[
+  \begin{array}{cccccc}
+\omega^3 & 1 & \omega^3 & 0 & \ggreen{1} & 1 \\
+\omega & \omega^3 & 1 & \omega^3 & \ggreen{0} & 1
+  \end{array}
+ \]
+ 
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+  \begin{frame}{Codes}
+ 
+ \begin{itemize}
+  \item A finite collection of ``strings'' (say $\C$) of given length over a given finite alphabet (say $\A$).
+  \item Take $\A = GF(5)$ and $\omega$ some primitive element.
+ \end{itemize}
+ 
+ \[
+  \begin{array}{cccccc}
+\omega^3 & 1 & \omega^3 & 0 & 1 & \rred{1} \\
+\omega & \omega^3 & 1 & \omega^3 & 0 & \rred{1}
+  \end{array}
+ \]
+ 
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+  \begin{frame}{Codes}
+ 
+ \begin{itemize}
+  \item A finite collection of ``strings'' (say $\C$) of given length over a given finite alphabet (say $\A$).
+  \item Take $\A = GF(5)$ and $\omega$ some primitive element.
+ \end{itemize}
+ 
+ \[
+  \begin{array}{cccccc}
+\ggreen{\omega^3} & \ggreen{1} & \ggreen{\omega^3} & \ggreen{0} & \ggreen{1} & 1 \\
+\ggreen{\omega} & \ggreen{\omega^3} & \ggreen{1} & \ggreen{\omega^3} & \ggreen{0} & 1
+  \end{array}
+ \]
+ 
+ \begin{itemize}
+  \item \ggreen{The codewords are at Hamming distance 5.}
+  \item\pause $d=\min_{\begin{smallmatrix} c,c' \in \C \\ c \neq c' \end{smallmatrix}}d(c,c')$.
+  \item\pause $d=5$.
+ \end{itemize}
+ 
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+  \begin{frame}{Codes}
+ 
+ \begin{itemize}
+  \item A finite collection of ``strings'' (say $\C$) of given length over a given finite alphabet (say $\A$).
+  \item Take $\A = GF(5)$ and $\omega$ some primitive element.
+ \end{itemize}
+ 
+ \[
+  \begin{array}{cccccc}
+\omega^3 & 1 & \omega^3 & 0 & 1 & 1 \\
+\omega & \omega^3 & 1 & \omega^3 & 0 & 1
+  \end{array}
+ \]
+ 
+ \begin{itemize}
+  \item Write $(6,5,5)_5$-code. \pause
+  \item More generally, $(n,d,w)_q$-code.
+ \end{itemize}
+ 
+ \end{frame}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Codes}
+ 
+  \begin{itemize}
+   \item Fundamental Question:
+   \begin{center}
+    Max $M$ \\
+    Given $n,w,d,q$.
+   \end{center}
+   denoted $\M_q(n,d,w)$.
+  \end{itemize}
+  
+  \pause
+  \begin{block}{Restricted Johnson Bound}
+ \begin{equation}\label{eq1}
+  \M_q(n,d,w) \leq \left\lfloor \frac{nd(q-1)}{qw^2-2(q-1)nw+nd(q-1)} \right\rfloor,
+ \end{equation}
+ if $qw^2-2(q-1)nw+nd(q-1)>0$.
+ \end{block}
+  
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Optimal Code}
+  
+  \[
+   \begin{array}{cccccc}
+    \omega^3&1&\omega^3&0&1&1\\
+    \omega&\omega^3&1&\omega^3&0&1
+   \end{array}
+  \]
+
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Optimal Code}
+  
+  \[
+   \begin{array}{cccccc}
+    \omega^3&1&\omega^3&0&1&1\\ \pause
+    &\omega^3&\pause1&\pause\omega^3&\pause0&\pause1
+   \end{array}
+  \]
+
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Optimal Code}
+  
+  \[
+   \begin{array}{cccccc}
+    \omega^3&1&\omega^3&0&1&1\\
+    \omega&\omega^3&1&\omega^3&0&1
+   \end{array}
+  \]
+
+ \end{frame}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Optimal Code}
+  
+   \[
+  \begin{array}{cccccc}
+\omega^3&1&\omega^3&0&1&1\\
+\omega&\omega^3&1&\omega^3&0&1\\
+\omega&\omega&\omega^3&1&\omega^3&0\\ \pause
+0&\omega&\omega&\omega^3&1&\omega^3\\ \pause
+1&0&\omega&\omega&\omega^3&1\\ \pause 
+\omega&1&0&\omega&\omega&\omega^3\\
+  \end{array}
+ \]
+  
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Optimal Code}
+ 
+  \[
+  \begin{array}{cccccc}
+\omega^3&1&\omega^3&0&1&1\\
+\omega&\omega^3&1&\omega^3&0&1\\
+\omega&\omega&\omega^3&1&\omega^3&0\\
+0&\omega&\omega&\omega^3&1&\omega^3\\
+1&0&\omega&\omega&\omega^3&1\\
+\omega&1&0&\omega&\omega&\omega^3\\ \hline
+1&\omega&1&0&\omega&\omega\\
+\omega^2&1&\omega&1&0&\omega\\
+\omega^2&\omega^2&1&\omega&1&0\\
+0&\omega^2&\omega^2&1&\omega&1\\
+\omega&0&\omega^2&\omega^2&1&\omega\\
+\omega^2&\omega&0&\omega^2&\omega^2&1 
+  \end{array}
+  \]
+  
+ \end{frame}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Optimal Code}  
+  
+  \[
+   \begin{array}{cccccc|cccccc}
+\omega^3&1&\omega^3&0&1&1 & \omega&\omega^2&\omega&0&\omega^2&\omega^2\\
+\omega&\omega^3&1&\omega^3&0&1 & \omega^3&\omega&\omega^2&\omega&0&\omega^2\\
+\omega&\omega&\omega^3&1&\omega^3&0 & \omega^3&\omega^3&\omega&\omega^2&\omega&0\\
+0&\omega&\omega&\omega^3&1&\omega^3 & 0&\omega^3&\omega^3&\omega&\omega^2&\omega\\
+1&0&\omega&\omega&\omega^3&1 & \omega^2&0&\omega^3&\omega^3&\omega&\omega^2\\
+\omega&1&0&\omega&\omega&\omega^3 & \omega^3&\omega^2&0&\omega^3&\omega^3&\omega\\ \hline
+1&\omega&1&0&\omega&\omega & &&&&&\\
+\omega^2&1&\omega&1&0&\omega & &&&&&\\
+\omega^2&\omega^2&1&\omega&1&0 & &&&&&\\
+0&\omega^2&\omega^2&1&\omega&1 & &&&&&\\
+\omega&0&\omega^2&\omega^2&1&\omega & &&&&&\\
+\omega^2&\omega&0&\omega^2&\omega^2&1 & &&&&&\\
+   \end{array}
+  \]
+
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Optimal Code}  
+  
+  \[
+   \begin{array}{cccccc|cccccc}
+\omega^3&1&\omega^3&0&1&1 & \omega&\omega^2&\omega&0&\omega^2&\omega^2\\
+\omega&\omega^3&1&\omega^3&0&1 & \omega^3&\omega&\omega^2&\omega&0&\omega^2\\
+\omega&\omega&\omega^3&1&\omega^3&0 & \omega^3&\omega^3&\omega&\omega^2&\omega&0\\
+0&\omega&\omega&\omega^3&1&\omega^3 & 0&\omega^3&\omega^3&\omega&\omega^2&\omega\\
+1&0&\omega&\omega&\omega^3&1 & \omega^2&0&\omega^3&\omega^3&\omega&\omega^2\\
+\omega&1&0&\omega&\omega&\omega^3 & \omega^3&\omega^2&0&\omega^3&\omega^3&\omega\\ \hline
+1&\omega&1&0&\omega&\omega & \omega^2&\omega^3&\omega^2&0&\omega^3&\omega^3\\
+\omega^2&1&\omega&1&0&\omega & 1&\omega^2&\omega^3&\omega^2&0&\omega^3\\
+\omega^2&\omega^2&1&\omega&1&0 & 1&1&\omega^2&\omega^3&\omega^2&0\\
+0&\omega^2&\omega^2&1&\omega&1 & 0&1&1&\omega^2&\omega^3&\omega^2\\
+\omega&0&\omega^2&\omega^2&1&\omega & \omega^3&0&1&1&\omega^2&\omega^3\\
+\omega^2&\omega&0&\omega^2&\omega^2&1 & 1&\omega^3&0&1&1&\omega^2\\
+   \end{array}
+  \]
+
+ \end{frame}
+ 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+ \begin{frame}{Optimal Code}
+  
+  \begin{itemize}
+  \item Parameters: $n=6,q=5,d=5,w=5,M=24$.
+  \begin{align*}
+  \left\lfloor \frac{nd(q-1)}{qw^2-2(q-1)nw+nd(q-1)} \right\rfloor &= \left\lfloor\frac{6\cdot5\cdot4}{5^3-2\cdot4\cdot6\cdot5+6\cdot5\cdot4}\right\rfloor \\
+  &=24
+  \end{align*}
+   \item The code is optimal.
+   \item $\M_5(6,5,5)=24$.
+  \end{itemize}
+  
+ \end{frame}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{BGWs}
+  
+  \begin{itemize}
+   \item $G$ some finite group.
+   \item $W=[w_{ij}]$ a $(0,G)$-matrix of order $v$.
+   \item $k$ non-zero entries in every row.
+   \item The multisets
+   $$
+   \{w_{ih}w_{jh}^{-1} : w_{ih} \neq 0 \neq w_{jh}, 0 \leq h < v\} \text{, for } i \neq j.
+   $$
+   contain each group element a constant $\lambda/|G|$ times.
+   \item $W$ is a balanced generalized weighing matrix.
+   \item Write $BGW(v,k,\lambda;G)$.
+   \end{itemize}
+  
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{BGWs}
+
+ \[
+   \begin{array}{cccccc|cccccc}
+\alert{\omega^3}&\alert{1}&\alert{\omega^3}&\alert{0}&\alert{1}&\alert{1} & \omega&\omega^2&\omega&0&\omega^2&\omega^2\\
+\omega&\omega^3&1&\omega^3&0&1 & \omega^3&\omega&\omega^2&\omega&0&\omega^2\\
+\alert{\omega}&\alert{\omega}&\alert{\omega^3}&\alert{1}&\alert{\omega^3}&\alert{0} & \omega^3&\omega^3&\omega&\omega^2&\omega&0\\
+0&\omega&\omega&\omega^3&1&\omega^3 & 0&\omega^3&\omega^3&\omega&\omega^2&\omega\\
+1&0&\omega&\omega&\omega^3&1 & \omega^2&0&\omega^3&\omega^3&\omega&\omega^2\\
+\omega&1&0&\omega&\omega&\omega^3 & \omega^3&\omega^2&0&\omega^3&\omega^3&\omega\\ \hline
+1&\omega&1&0&\omega&\omega & \omega^2&\omega^3&\omega^2&0&\omega^3&\omega^3\\
+\omega^2&1&\omega&1&0&\omega & 1&\omega^2&\omega^3&\omega^2&0&\omega^3\\
+\omega^2&\omega^2&1&\omega&1&0 & 1&1&\omega^2&\omega^3&\omega^2&0\\
+0&\omega^2&\omega^2&1&\omega&1 & 0&1&1&\omega^2&\omega^3&\omega^2\\
+\omega&0&\omega^2&\omega^2&1&\omega & \omega^3&0&1&1&\omega^2&\omega^3\\
+\omega^2&\omega&0&\omega^2&\omega^2&1 & 1&\omega^3&0&1&1&\omega^2\\
+   \end{array}
+  \]
+
+ \end{frame}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{BGWs}
+  
+  \[
+   \begin{array}{cccccc}
+  \omega^3&1&\omega^3&0&1&1\\
+  \omega&\omega&\omega^3&1&\omega^3&0
+   \end{array}
+  \]
+
+ \end{frame}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{BGWs}
+  
+  \[
+   \begin{array}{cccccc}
+  \alert{\omega^3}&\alert{1}&\alert{\omega^3}&0&\alert{1}&1\\
+  \alert{\omega}&\alert{\omega}&\alert{\omega^3}&1&\alert{\omega^3}&0
+   \end{array}
+  \]
+
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{BGWs}
+  
+  \[
+   \begin{array}{cccccc}
+  \alert{\omega^3}&\alert{1}&\alert{\omega^3}&0&\alert{1}&1\\
+  \alert{\omega^{-1}}&\alert{\omega^{-1}}&\alert{\omega^{-3}}&1&\alert{\omega^{-3}}&0
+   \end{array}
+  \]
+
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{BGWs}
+  
+  \[
+   \begin{array}{cccccc}
+  \alert{\omega^3}&\alert{1}&\alert{\omega^3}&0&\alert{1}&1\\
+  \alert{\omega^{-1}}&\alert{\omega^{-1}}&\alert{\omega^{-3}}&1&\alert{\omega^{-3}}&0 \\ \hline
+  \ggreen{\omega^2}&\ggreen{\omega^3}&\ggreen{1}&&\ggreen{\omega}&
+   \end{array}
+  \]
+
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{BGWs}
+  
+  \[
+   \begin{array}{cccccc}
+  \alert{\omega^3}&\alert{1}&\alert{\omega^3}&0&\alert{1}&1\\
+  \alert{\omega^{-1}}&\alert{\omega^{-1}}&\alert{\omega^{-3}}&1&\alert{\omega^{-3}}&0 \\ \hline
+  \ggreen{\{\omega^2,}&\ggreen{\omega^3,}&\ggreen{1,}&&\ggreen{\omega\}}&
+   \end{array}
+  \]
+
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Trace Construction}
+  
+  \begin{itemize}
+   \item $q$ a prime power, $m>1$.
+   \item $K=GF(q)$, $F=GF(q^m)$.
+   \item Relative trace $F \rightarrow K$:
+   $$
+   \tr(\alpha) = \alpha + \alpha^q + \cdots + \alpha^{q^{m-1}}, \qquad \alpha \in F.
+   $$
+   \item $\beta \in F$ a primitive element.
+   \item $\omega = \beta^{-\ell}$, where $\ell=\frac{q^m-1}{q-1}$.
+  \end{itemize}
+  
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Trace Construction}
+  
+  \begin{itemize}
+   \item Construct the $\ell$-dimensional vector
+   $$
+   u = (\tr(\beta^0), \tr(\beta^1), \dots, \tr(\beta^{\ell-1})).
+   $$
+   \item Take $u$ as the first row of $W$.
+   \item Remaining rows are the first $\ell-1$ $\omega$-shifts of $u$.
+   \item \cite{jungnickel-tonchev-perfect-codes-2} showed that these structures are 
+   $$
+   BGW\left( \frac{q^m-1}{q-1},q^{m-1},q^{m-1}-q^{m-2};GF(q)^* \right)s.
+   $$
+  \end{itemize}
+  
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Codes From BGWs}
+ 
+ \begin{itemize}
+  \item If $W$ is a classical parameter $BGW$ over $GF(q)^*$, then the rows of $W,\omega W, \dots, \omega^{q-2}W$, form an optimal, constant weight code.
+  \item Can be assumed to be generated by single codeword.
+  \item Parameters:
+  $$
+  n=\frac{q^m-1}{q-1}, d=q^{m-1}, w=q^{m-1}, M=q^m-1.
+  $$
+ \end{itemize}
+ 
+ \begin{block}{Theorem}
+  $$
+  \M_q\left( \frac{q^m-1}{q-1},q^{m-1},q^{m-1} \right) = q^m-1,
+  $$
+ \end{block}
+  
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Projections}
+  
+  \[
+   \left[\begin{array}{cccccc}
+\omega^3&1&\omega^3&0&1&1\\
+\omega&\omega^3&1&\omega^3&0&1\\
+\omega&\omega&\omega^3&1&\omega^3&0\\
+0&\omega&\omega&\omega^3&1&\omega^3\\ 
+1&0&\omega&\omega&\omega^3&1\\ 
+\omega&1&0&\omega&\omega&\omega^3
+  \end{array}\right]
+  \]
+
+  \begin{itemize}
+  \item A $BGW(6,5,4;GF(5)^*)$.
+   \item\pause Apply $\omega \mapsto -1$.
+  \end{itemize}
+  
+ \end{frame}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Projections}
+  
+  \[
+   \left[\begin{array}{cccccc}
+-1 & 1 & -1 & 0 & 1 & 1 \\
+-1 & -1 & 1 & -1 & 0 & 1 \\
+-1 & -1 & -1 & 1 & -1 & 0 \\
+0 & -1 & -1 & -1 & 1 & -1 \\
+1 & 0 & -1 & -1 & -1 & 1 \\
+-1 & 1 & 0 & -1 & -1 & -1
+   \end{array}\right]
+  \]
+
+  \begin{itemize}
+   \item\pause A $BGW(6,5,4; \{-1,1\})$.
+  \end{itemize}
+
+ \end{frame}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Ternary Codes}
+ 
+ \begin{itemize}
+  \item If $q$ is odd, then apply $\omega \mapsto -1$.
+  \item The result is a $BGW$ over $\{-1,1\}$.
+  \item The matrix and its negative form an optimal ternary code.
+ \end{itemize}
+ 
+ \begin{block}{Theorem}
+  $$
+  \M_3\left( \frac{q^m-1}{q-1},q^{m-2}\left(\frac{q+3}{2}\right),q^{m-1} \right) = 2\left(\frac{q^m-1}{q-1}\right),
+  $$
+  for $q$ odd.
+ \end{block}
+  
+  \begin{itemize}
+   \item \cite{cont-tern-code} considered the case $m=2$.
+  \end{itemize}
+
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Ternary Codes}
+  \begin{itemize}
+   \item Our optimal constant weight $(6,5,5)_5$-code becomes...
+  \begin{small}
+  \[
+   \begin{array}{rrrrrr}
+-1 & 1 & -1 & 0 & 1 & 1 \\
+-1 & -1 & 1 & -1 & 0 & 1 \\
+-1 & -1 & -1 & 1 & -1 & 0 \\
+0 & -1 & -1 & -1 & 1 & -1 \\
+1 & 0 & -1 & -1 & -1 & 1 \\
+-1 & 1 & 0 & -1 & -1 & -1 \\ \hline
+1 & -1 & 1 & 0 & -1 & -1 \\
+1 & 1 & -1 & 1 & 0 & -1 \\
+1 & 1 & 1 & -1 & 1 & 0 \\
+0 & 1 & 1 & 1 & -1 & 1 \\
+-1 & 0 & 1 & 1 & 1 & -1 \\
+1 & -1 & 0 & 1 & 1 & 1
+   \end{array}
+  \]
+  \end{small}
+  ... an optimal constant weight $(6,3,5)_3$-code.
+  \end{itemize}
+
+ \end{frame}
+ 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}
+ 
+  \begin{center}
+   {\huge\bf The End!!}\\
+   
+   {\bf Thank You!}
+  \end{center}
+
+ \end{frame}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{References}
+  \bibliographystyle{apalike}
+  \bibliography{mybib.bib}
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{frame}{Codes}
+  
+  \begin{block}{Unrestricted Johnson Bound}
+   \begin{enumerate}
+   \item If $2w < d$, then $A_q(n,d,w) = 1$; and
+   \item if $2w \geq d$ and $d \in \{2e-1,2e\}$, then
+   \begin{small}
+   $$
+   A_q(n,d,w) \leq \left\lfloor \frac{n(q-1)}{w} \left\lfloor \frac{(n-1)(q-1)}{w-1} \left\lfloor \cdots \left\lfloor \frac{(n-w+e)(q-1)}{e} \right\rfloor \cdots \right\rfloor\right\rfloor\right\rfloor
+   $$
+   \end{small}
+   \end{enumerate}
+  \end{block}
+
+ \end{frame}
+ \end{document}

@@ -1,0 +1,1207 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{natbib}
+
+\newcommand{\rred}[1]{\textcolor{red}{#1}}
+\newcommand{\ggreen}[1]{\textcolor{green}{#1}}
+\newcommand{\bblue}[1]{\textcolor{blue}{#1}}
+
+\title[Splittable ODs]{Balancedly Splittable Orthogonal Designs}
+% \subtitle{}
+\author[T. Pender]{Thomas Pender}
+\institute[U of L]{Department of Mathematics and Computer Science\\University of
+Lethbridge}
+\date[BIRS June 2022]{Alberta--Montana Combinatorics \& Algorithms Days at BIRS\\June 2022}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+
+  \titlepage
+  \centering{\scriptsize $^{***}$Joint work with Hadi Kharaghani, Sho Suda}
+\end{frame}
+
+\begin{frame}{Summary}
+
+  \begin{itemize}
+    \item balancedly splittable Hadamard matrices
+    \item balancedly splittable orthogonal designs
+    \item construction
+    \item related configurations
+  \end{itemize}
+  
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Hadamard Matrices}
+
+  \begin{block}{Definition: Hadmard Matrix}
+    \begin{itemize}
+      \item A square matrix with entries from $\{-1,1\}$ with pairwise
+        orthogonal rows.
+      \item Equiv. $HH^t = nI_n$, with $H$ an $n \times n$ $(-1,1)$-matrix of
+        order $n$.
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}{Hadamard Matrices}
+
+  \[
+    \arraycolsep=1.0pt\def\arraystretch{0.75}
+    \left(\begin{array}{cccccccccccccccc}
+            1&1&1&1&1&1&1&1&1&1&-&-&-&-&-&-\\
+            1&1&1&1&-&-&1&1&-&-&1&1&-&-&1&1\\
+            1&1&1&1&1&1&-&-&-&-&-&-&1&1&1&1\\
+            1&1&1&1&-&-&-&-&1&1&1&1&1&1&-&-\\
+            1&-&1&-&1&1&1&-&1&-&1&1&1&-&-&1\\
+            1&-&1&-&1&1&-&1&-&1&1&1&-&1&1&-\\
+            1&1&-&-&1&-&1&1&1&-&-&1&1&1&1&-\\
+            1&1&-&-&-&1&1&1&-&1&1&-&1&1&-&1\\
+            1&-&-&1&1&-&1&-&1&1&1&-&-&1&1&1\\
+            1&-&-&1&-&1&-&1&1&1&-&1&1&-&1&1\\
+            -&1&-&1&1&1&1&-&-&1&1&1&1&-&1&-\\
+            -&1&-&1&1&1&-&1&1&-&1&1&-&1&-&1\\
+            -&-&1&1&-&1&1&1&1&-&1&-&1&1&1&-\\
+            -&-&1&1&1&-&1&1&-&1&-&1&1&1&-&1\\
+            -&1&1&-&1&-&-&1&1&1&1&-&1&-&1&1\\
+            -&1&1&-&-&1&1&-&1&1&-&1&-&1&1&1\\
+    \end{array}\right)
+  \]
+
+  \begin{itemize}
+    \item a Hadamard matrix of order 16
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Hadamard Matrices}
+
+  \begin{block}{Definition: Hadmard Matrix}
+    \begin{itemize}
+    \item A square matrix with entries from $\{-1,1\}$ with pairwise
+      orthogonal rows.
+    \item Equiv. $HH^t = nI_n$, with $H$ an $n \times n$ $(-1,1)$-matrix of
+      order $n$.
+    \end{itemize}
+  \end{block}
+
+  \pause
+
+  \begin{block}{Definition: Balancedly Splittable \cite[][]{splittable-hadamard}}
+    \begin{itemize}
+    \item A Hadamard matrix $H$ of order $n$ with $n \times \ell$ submatrix $H_1$ .
+      \item $H$ is $(n,\ell,a,b)$ balancedly splittable, $a<b$, if $$H_1H_1^t =
+        \ell I_n + aA + b(J_n-I_n-A),$$ for symmetric $(0,1)$-matrix $A$ with
+        zero diagonal.
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}{Hadamard Matrices}
+
+  \[
+    \arraycolsep=1.0pt\def\arraystretch{0.75}
+    \left(\begin{array}{cccccccccccccccc}
+            1&1&1&1&1&1&1&1&1&1&-&-&-&-&-&-\\
+            1&1&1&1&-&-&1&1&-&-&1&1&-&-&1&1\\
+            1&1&1&1&1&1&-&-&-&-&-&-&1&1&1&1\\
+            1&1&1&1&-&-&-&-&1&1&1&1&1&1&-&-\\
+            1&-&1&-&1&1&1&-&1&-&1&1&1&-&-&1\\
+            1&-&1&-&1&1&-&1&-&1&1&1&-&1&1&-\\
+            1&1&-&-&1&-&1&1&1&-&-&1&1&1&1&-\\
+            1&1&-&-&-&1&1&1&-&1&1&-&1&1&-&1\\
+            1&-&-&1&1&-&1&-&1&1&1&-&-&1&1&1\\
+            1&-&-&1&-&1&-&1&1&1&-&1&1&-&1&1\\
+            -&1&-&1&1&1&1&-&-&1&1&1&1&-&1&-\\
+            -&1&-&1&1&1&-&1&1&-&1&1&-&1&-&1\\
+            -&-&1&1&-&1&1&1&1&-&1&-&1&1&1&-\\
+            -&-&1&1&1&-&1&1&-&1&-&1&1&1&-&1\\
+            -&1&1&-&1&-&-&1&1&1&1&-&1&-&1&1\\
+            -&1&1&-&-&1&1&-&1&1&-&1&-&1&1&1\\
+          \end{array}\right)
+      \]
+
+      \begin{itemize}
+      \item a Hadamard matrix of order 16
+      \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Hadmard Matrices}
+
+  \[
+    \arraycolsep=1.0pt\def\arraystretch{0.75}
+    \left(\begin{array}{cccc|cccccc|cccccc}
+            1&1&1&1&\bblue{1}&\bblue{1}&\bblue{1}&\bblue{1}&\bblue{1}&\bblue{1}&-&-&-&-&-&-\\
+            1&1&1&1&\bblue{-}&\bblue{-}&\bblue{1}&\bblue{1}&\bblue{-}&\bblue{-}&1&1&-&-&1&1\\
+            1&1&1&1&\bblue{1}&\bblue{1}&\bblue{-}&\bblue{-}&\bblue{-}&\bblue{-}&-&-&1&1&1&1\\
+            1&1&1&1&\bblue{-}&\bblue{-}&\bblue{-}&\bblue{-}&\bblue{1}&\bblue{1}&1&1&1&1&-&-\\
+            1&-&1&-&\bblue{1}&\bblue{1}&\bblue{1}&\bblue{-}&\bblue{1}&\bblue{-}&1&1&1&-&-&1\\
+            1&-&1&-&\bblue{1}&\bblue{1}&\bblue{-}&\bblue{1}&\bblue{-}&\bblue{1}&1&1&-&1&1&-\\
+            1&1&-&-&\bblue{1}&\bblue{-}&\bblue{1}&\bblue{1}&\bblue{1}&\bblue{-}&-&1&1&1&1&-\\
+            1&1&-&-&\bblue{-}&\bblue{1}&\bblue{1}&\bblue{1}&\bblue{-}&\bblue{1}&1&-&1&1&-&1\\
+            1&-&-&1&\bblue{1}&\bblue{-}&\bblue{1}&\bblue{-}&\bblue{1}&\bblue{1}&1&-&-&1&1&1\\
+            1&-&-&1&\bblue{-}&\bblue{1}&\bblue{-}&\bblue{1}&\bblue{1}&\bblue{1}&-&1&1&-&1&1\\
+            -&1&-&1&\bblue{1}&\bblue{1}&\bblue{1}&\bblue{-}&\bblue{-}&\bblue{1}&1&1&1&-&1&-\\
+            -&1&-&1&\bblue{1}&\bblue{1}&\bblue{-}&\bblue{1}&\bblue{1}&\bblue{-}&1&1&-&1&-&1\\
+            -&-&1&1&\bblue{-}&\bblue{1}&\bblue{1}&\bblue{1}&\bblue{1}&\bblue{-}&1&-&1&1&1&-\\
+            -&-&1&1&\bblue{1}&\bblue{-}&\bblue{1}&\bblue{1}&\bblue{-}&\bblue{1}&-&1&1&1&-&1\\
+            -&1&1&-&\bblue{1}&\bblue{-}&\bblue{-}&\bblue{1}&\bblue{1}&\bblue{1}&1&-&1&-&1&1\\
+            -&1&1&-&\bblue{-}&\bblue{1}&\bblue{1}&\bblue{-}&\bblue{1}&\bblue{1}&-&1&-&1&1&1\\
+          \end{array}\right)
+      \]
+
+      \begin{itemize}
+      \item a balancedly splittable Hadamard matrix of order 16
+      \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Hadamard Matrices}
+
+  \[
+    \arraycolsep=1.0pt\def\arraystretch{0.75}
+    \left(
+      \begin{array}{cccccc}
+        1&1&1&1&1&1\\
+        -&-&1&1&-&-\\
+        1&1&-&-&-&-\\
+        -&-&-&-&1&1\\
+        1&1&1&-&1&-\\
+        1&1&-&1&-&1\\
+        1&-&1&1&1&-\\
+        -&1&1&1&-&1\\
+        1&-&1&-&1&1\\
+        -&1&-&1&1&1\\
+        1&1&1&-&-&1\\
+        1&1&-&1&1&-\\
+        -&1&1&1&1&-\\
+        1&-&1&1&-&1\\
+        1&-&-&1&1&1\\
+        -&1&1&-&1&1\\
+      \end{array}
+    \right)
+    \arraycolsep=1.0pt\def\arraystretch{0.75}
+    \left(
+      \begin{array}{cccccccccccccccc}
+        1&-&1&-&1&1&1&-&1&-&1&1&-&1&1&-\\
+        1&-&1&-&1&1&-&1&-&1&1&1&1&-&-&1\\
+        1&1&-&-&1&-&1&1&1&-&1&-&1&1&-&1\\
+        1&1&-&-&-&1&1&1&-&1&-&1&1&1&1&-\\
+        1&-&-&1&1&-&1&-&1&1&-&1&1&-&1&1\\
+        1&-&-&1&-&1&-&1&1&1&1&-&-&1&1&1\\
+      \end{array}
+    \right)
+  \]
+  
+\end{frame}
+
+\begin{frame}{Hadamard Matrices}
+
+  \[
+    \arraycolsep=2.0pt\def\arraystretch{0.75}
+    \left(
+      \begin{array}{cccccccccccccccc}
+        6&\bar{2}&\bar{2}&\bar{2}&2&2&2&2&2&2&2&2&2&2&2&2\\
+        \bar{2}&6&\bar{2}&\bar{2}&\bar{2}&\bar{2}&2&2&\bar{2}&\bar{2}&\bar{2}&\bar{2}&2&2&\bar{2}&\bar{2}\\
+        \bar{2}&\bar{2}&6&\bar{2}&2&2&\bar{2}&\bar{2}&\bar{2}&\bar{2}&2&2&\bar{2}&\bar{2}&\bar{2}&\bar{2}\\
+        \bar{2}&\bar{2}&\bar{2}&6&\bar{2}&\bar{2}&\bar{2}&\bar{2}&2&2&\bar{2}&\bar{2}&\bar{2}&\bar{2}&2&2\\
+        2&\bar{2}&2&\bar{2}&6&\bar{2}&2&\bar{2}&2&\bar{2}&2&2&2&\bar{2}&\bar{2}&2\\
+        2&\bar{2}&2&\bar{2}&\bar{2}&6&\bar{2}&2&\bar{2}&2&2&2&\bar{2}&2&2&\bar{2}\\
+        2&2&\bar{2}&\bar{2}&2&\bar{2}&6&\bar{2}&2&\bar{2}&\bar{2}&2&2&2&2&\bar{2}\\
+        2&2&\bar{2}&\bar{2}&\bar{2}&2&\bar{2}&6&\bar{2}&2&2&\bar{2}&2&2&\bar{2}&2\\
+        2&\bar{2}&\bar{2}&2&2&\bar{2}&2&\bar{2}&6&\bar{2}&2&\bar{2}&\bar{2}&2&2&2\\
+        2&\bar{2}&\bar{2}&2&\bar{2}&2&\bar{2}&2&\bar{2}&6&\bar{2}&2&2&\bar{2}&2&2\\
+        2&\bar{2}&2&\bar{2}&2&2&\bar{2}&2&2&\bar{2}&6&\bar{2}&\bar{2}&2&\bar{2}&2\\
+        2&\bar{2}&2&\bar{2}&2&2&2&\bar{2}&\bar{2}&2&\bar{2}&6&2&\bar{2}&2&\bar{2}\\
+        2&2&\bar{2}&\bar{2}&2&\bar{2}&2&2&\bar{2}&2&\bar{2}&2&6&\bar{2}&\bar{2}&2\\
+        2&2&\bar{2}&\bar{2}&\bar{2}&2&2&2&2&\bar{2}&2&\bar{2}&\bar{2}&6&2&\bar{2}\\
+        2&\bar{2}&\bar{2}&2&\bar{2}&2&2&\bar{2}&2&2&\bar{2}&2&\bar{2}&2&6&\bar{2}\\
+        2&\bar{2}&\bar{2}&2&2&\bar{2}&\bar{2}&2&2&2&2&\bar{2}&2&\bar{2}&\bar{2}&6\\
+      \end{array}
+    \right)
+  \]
+
+  \begin{itemize}
+    \item The rows of the split are equiangular.
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Hadamard Matrices}
+
+  \[
+    \arraycolsep=1.0pt\def\arraystretch{0.75}
+    \left(\begin{array}{cccc|cccccc|cccccc}
+            1&1&1&1&1&1&1&1&1&1&-&-&-&-&-&-\\
+            1&1&1&1&-&-&1&1&-&-&1&1&-&-&1&1\\
+            1&1&1&1&1&1&-&-&-&-&-&-&1&1&1&1\\
+            1&1&1&1&-&-&-&-&1&1&1&1&1&1&-&-\\ \hline
+            1&-&1&-&1&1&1&-&1&-&1&1&1&-&-&1\\
+            1&-&1&-&1&1&-&1&-&1&1&1&-&1&1&-\\
+            1&1&-&-&1&-&1&1&1&-&-&1&1&1&1&-\\
+            1&1&-&-&-&1&1&1&-&1&1&-&1&1&-&1\\
+            1&-&-&1&1&-&1&-&1&1&1&-&-&1&1&1\\
+            1&-&-&1&-&1&-&1&1&1&-&1&1&-&1&1\\ \hline
+            -&1&-&1&1&1&1&-&-&1&1&1&1&-&1&-\\
+            -&1&-&1&1&1&-&1&1&-&1&1&-&1&-&1\\
+            -&-&1&1&-&1&1&1&1&-&1&-&1&1&1&-\\
+            -&-&1&1&1&-&1&1&-&1&-&1&1&1&-&1\\
+            -&1&1&-&1&-&-&1&1&1&1&-&1&-&1&1\\
+            -&1&1&-&-&1&1&-&1&1&-&1&-&1&1&1\\
+          \end{array}\right)
+  \]
+
+  \begin{itemize}
+    \item There are four splits.
+  \end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{frame}{Orthogonal Designs}
+
+  \begin{block}{Definition: Orthogonal Designs}
+    \begin{itemize}
+    \item A square $\{\pm z_1, \dots, \pm z_u\}$-matriz $X$ of order $n$ such
+      that
+      $$
+      XX^t = \sigma I_n, \qquad s_i \in \mathbb{N},
+      $$
+      where $\sigma = \sum_i s_iz_i^2$.
+      \item Write $OD(n;s_1, \dots, s_u)$.
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}{Orthogonal Designs}
+
+  \[
+    \arraycolsep=2.0pt\def\arraystretch{0.75}
+    \left(
+      \begin{array}{cccccccccccccccc}
+        a&b&a&b&a&b&a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&\bar{a}&\bar{b}\\
+        a&b&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&\bar{b}&a&b\\
+        a&b&a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&\bar{a}&\bar{b}&a&b&a&b\\
+        a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&a&b&a&b&a&b&\bar{a}&\bar{b}\\
+        b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a\\
+        b&\bar{a}&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}\\
+        a&b&\bar{a}&\bar{b}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}\\
+        a&b&\bar{a}&\bar{b}&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a\\
+        b&\bar{a}&\bar{b}&a&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a&a&b\\
+        b&\bar{a}&\bar{b}&a&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b\\
+        \bar{b}&a&\bar{b}&a&a&b&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}\\
+        \bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a\\
+        \bar{a}&\bar{b}&a&b&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}\\
+        \bar{a}&\bar{b}&a&b&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a\\
+        \bar{b}&a&b&\bar{a}&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}&a&b\\
+        \bar{b}&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b\\
+      \end{array}
+    \right)
+  \]
+
+  \begin{itemize}
+    \item An $OD(16;8,8)$.
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Orthogonal Designs}
+
+  \[
+    \arraycolsep=2.0pt\def\arraystretch{0.75}
+    \left(
+      \begin{array}{cccc|cccccc|cccccc}
+        a&b&a&b&\bblue{a}&\bblue{b}&\bblue{a}&\bblue{b}&\bblue{a}&\bblue{b}&\bar{a}&\bar{b}&\bar{a}&\bar{b}&\bar{a}&\bar{b}\\
+        a&b&a&b&\bblue{\bar{a}}&\bblue{\bar{b}}&\bblue{a}&\bblue{b}&\bblue{\bar{a}}&\bblue{\bar{b}}&a&b&\bar{a}&\bar{b}&a&b\\
+        a&b&a&b&\bblue{a}&\bblue{b}&\bblue{\bar{a}}&\bblue{\bar{b}}&\bblue{\bar{a}}&\bblue{\bar{b}}&\bar{a}&\bar{b}&a&b&a&b\\
+        a&b&a&b&\bblue{\bar{a}}&\bblue{\bar{b}}&\bblue{\bar{a}}&\bblue{\bar{b}}&\bblue{a}&\bblue{b}&a&b&a&b&\bar{a}&\bar{b}\\
+        b&\bar{a}&b&\bar{a}&\bblue{a}&\bblue{b}&\bblue{b}&\bblue{\bar{a}}&\bblue{b}&\bblue{\bar{a}}&a&b&b&\bar{a}&\bar{b}&a\\
+        b&\bar{a}&b&\bar{a}&\bblue{a}&\bblue{b}&\bblue{\bar{b}}&\bblue{a}&\bblue{\bar{b}}&\bblue{a}&a&b&\bar{b}&a&b&\bar{a}\\
+        a&b&\bar{a}&\bar{b}&\bblue{b}&\bblue{\bar{a}}&\bblue{a}&\bblue{b}&\bblue{b}&\bblue{\bar{a}}&\bar{b}&a&a&b&b&\bar{a}\\
+        a&b&\bar{a}&\bar{b}&\bblue{\bar{b}}&\bblue{a}&\bblue{a}&\bblue{b}&\bblue{\bar{b}}&\bblue{a}&b&\bar{a}&a&b&\bar{b}&a\\
+        b&\bar{a}&\bar{b}&a&\bblue{b}&\bblue{\bar{a}}&\bblue{b}&\bblue{\bar{a}}&\bblue{a}&\bblue{b}&b&\bar{a}&\bar{b}&a&a&b\\
+        b&\bar{a}&\bar{b}&a&\bblue{\bar{b}}&\bblue{a}&\bblue{\bar{b}}&\bblue{a}&\bblue{a}&\bblue{b}&\bar{b}&a&b&\bar{a}&a&b\\
+        \bar{b}&a&\bar{b}&a&\bblue{a}&\bblue{b}&\bblue{b}&\bblue{\bar{a}}&\bblue{\bar{b}}&\bblue{a}&a&b&b&\bar{a}&b&\bar{a}\\
+        \bar{b}&a&\bar{b}&a&\bblue{a}&\bblue{b}&\bblue{\bar{b}}&\bblue{a}&\bblue{b}&\bblue{\bar{a}}&a&b&\bar{b}&a&\bar{b}&a\\
+        \bar{a}&\bar{b}&a&b&\bblue{\bar{b}}&\bblue{a}&\bblue{a}&\bblue{b}&\bblue{b}&\bblue{\bar{a}}&b&\bar{a}&a&b&b&\bar{a}\\
+        \bar{a}&\bar{b}&a&b&\bblue{b}&\bblue{\bar{a}}&\bblue{a}&\bblue{b}&\bblue{\bar{b}}&\bblue{a}&\bar{b}&a&a&b&\bar{b}&a\\
+        \bar{b}&a&b&\bar{a}&\bblue{b}&\bblue{\bar{a}}&\bblue{\bar{b}}&\bblue{a}&\bblue{a}&\bblue{b}&b&\bar{a}&b&\bar{a}&a&b\\
+        \bar{b}&a&b&\bar{a}&\bblue{\bar{b}}&\bblue{a}&\bblue{b}&\bblue{\bar{a}}&\bblue{a}&\bblue{b}&\bar{b}&a&\bar{b}&a&a&b\\
+      \end{array}
+    \right)
+  \]
+
+\end{frame}
+
+\begin{frame}{Orthogonal Designs}
+
+  \[
+      (a^2+b^2)
+      \arraycolsep=1.0pt\def\arraystretch{0.75}
+      \left(
+      \begin{array}{cccccccccccccccc}
+        3&-&-&-&1&1&1&1&1&1&1&1&1&1&1&1\\
+        -&3&-&-&-&-&1&1&-&-&-&-&1&1&-&-\\
+        -&-&3&-&1&1&-&-&-&-&1&1&-&-&-&-\\
+        -&-&-&3&-&-&-&-&1&1&-&-&-&-&1&1\\
+        1&-&1&-&3&-&1&-&1&-&1&1&1&-&-&1\\
+        1&-&1&-&-&3&-&1&-&1&1&1&-&1&1&-\\
+        1&1&-&-&1&-&3&-&1&-&-&1&1&1&1&-\\
+        1&1&-&-&-&1&-&3&-&1&1&-&1&1&-&1\\
+        1&-&-&1&1&-&1&-&3&-&1&-&-&1&1&1\\
+        1&-&-&1&-&1&-&1&-&3&-&1&1&-&1&1\\
+        1&-&1&-&1&1&-&1&1&-&3&-&-&1&-&1\\
+        1&-&1&-&1&1&1&-&-&1&-&3&1&-&1&-\\
+        1&1&-&-&1&-&1&1&-&1&-&1&3&-&-&1\\
+        1&1&-&-&-&1&1&1&1&-&1&-&-&3&1&-\\
+        1&-&-&1&-&1&1&-&1&1&-&1&-&1&3&-\\
+        1&-&-&1&1&-&-&1&1&1&1&-&1&-&-&3\\
+      \end{array}
+    \right)
+  \]
+  
+\end{frame}
+
+\begin{frame}{Orthogonal Designs}
+
+  \[
+    \arraycolsep=2.0pt\def\arraystretch{0.75}
+    \left(
+      \begin{array}{cccccccccccccccc}
+        a&b&a&b&a&b&a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&\bar{a}&\bar{b}\\
+        a&b&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&\bar{b}&a&b\\
+        a&b&a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&\bar{a}&\bar{b}&a&b&a&b\\
+        a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&a&b&a&b&a&b&\bar{a}&\bar{b}\\ \hline
+\bblue{b}&\bblue{\bar{a}}&\bblue{b}&\bblue{\bar{a}}&\bblue{a}&\bblue{b}&\bblue{b}&\bblue{\bar{a}}&\bblue{b}&\bblue{\bar{a}}&\bblue{a}&\bblue{b}&\bblue{b}&\bblue{\bar{a}}&\bblue{\bar{b}}&\bblue{a}\\
+\bblue{b}&\bblue{\bar{a}}&\bblue{b}&\bblue{\bar{a}}&\bblue{a}&\bblue{b}&\bblue{\bar{b}}&\bblue{a}&\bblue{\bar{b}}&\bblue{a}&\bblue{a}&\bblue{b}&\bblue{\bar{b}}&\bblue{a}&\bblue{b}&\bblue{\bar{a}}\\
+\bblue{a}&\bblue{b}&\bblue{\bar{a}}&\bblue{\bar{b}}&\bblue{b}&\bblue{\bar{a}}&\bblue{a}&\bblue{b}&\bblue{b}&\bblue{\bar{a}}&\bblue{\bar{b}}&\bblue{a}&\bblue{a}&\bblue{b}&\bblue{b}&\bblue{\bar{a}}\\
+\bblue{a}&\bblue{b}&\bblue{\bar{a}}&\bblue{\bar{b}}&\bblue{\bar{b}}&\bblue{a}&\bblue{a}&\bblue{b}&\bblue{\bar{b}}&\bblue{a}&\bblue{b}&\bblue{\bar{a}}&\bblue{a}&\bblue{b}&\bblue{\bar{b}}&\bblue{a}\\
+\bblue{b}&\bblue{\bar{a}}&\bblue{\bar{b}}&\bblue{a}&\bblue{b}&\bblue{\bar{a}}&\bblue{b}&\bblue{\bar{a}}&\bblue{a}&\bblue{b}&\bblue{b}&\bblue{\bar{a}}&\bblue{\bar{b}}&\bblue{a}&\bblue{a}&\bblue{b}\\
+\bblue{b}&\bblue{\bar{a}}&\bblue{\bar{b}}&\bblue{a}&\bblue{\bar{b}}&\bblue{a}&\bblue{\bar{b}}&\bblue{a}&\bblue{a}&\bblue{b}&\bblue{\bar{b}}&\bblue{a}&\bblue{b}&\bblue{\bar{a}}&\bblue{a}&\bblue{b}\\ \hline
+        \bar{b}&a&\bar{b}&a&a&b&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}\\
+        \bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a\\
+        \bar{a}&\bar{b}&a&b&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}\\
+        \bar{a}&\bar{b}&a&b&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a\\
+        \bar{b}&a&b&\bar{a}&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}&a&b\\
+        \bar{b}&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b\\
+      \end{array}
+    \right)
+  \]
+
+  \begin{itemize}
+    \item Products in the set $\{\pm 2a^2, \pm 2b^2, \pm 2ab\}$.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Orthogonal Designs}
+
+  \begin{block}{Definition: Orthogonal Designs}
+    \begin{itemize}
+    \item A square $\{\pm z_1, \dots, \pm z_u\}$-matrix $X$ of order $n$ such
+      that
+      $
+      XX^t = \sigma I_n, s_i \in \mathbb{N},
+      $
+      where $\sigma = \sum_i s_iz_i^2$.
+    \end{itemize}
+  \end{block}
+
+  \pause
+
+  \begin{block}{Definition: Balancedly Splittable \cite[][]{split-od}} 
+    \begin{itemize}
+    \item An OD $X$ with $n \times \ell$ submatrix $X_1$ admits a stable
+      $(n,\ell,a,b)$ split if
+        $$
+        X_1X_1^t = \sigma(cI_n + aA + b(J_n-I_n-A)),
+        $$
+        where $c \mid \ell$.
+      \item The split is unstable if it is not stable and
+        $$
+        X_1X_1^t = \ell I_n + aA + b(J_n-I_n-A)
+        $$
+        after replacing each variable with $1$.
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{frame}{Auxiliary Matrices}
+
+  \begin{block}{Definition: Auxiliary Matrices}
+    \begin{itemize}
+      \item $X$ a full $OD(n;s_1, \dots, s_u)$ and $H$ the Hadamard matrix
+        obtained by replacing each variable with $1$.
+      \item Label rows of $X$ and $H$ by $x_0, \dots, x_{n-1}$, and
+        $h_0, \dots, h_{n-1}$.
+      \item The auxiliary matrices of $X$ are given by
+        $$
+        c_i = h_i^tx_i, \qquad i = 0, \dots, n-1. 
+        $$
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{frame}{Construction}
+
+  \begin{itemize}
+    \item An $OD(2;1,1)$:
+  \end{itemize}
+
+  \[
+    \begin{pmatrix}
+      a & b \\ b & -a
+    \end{pmatrix}
+  \]
+
+  \begin{itemize}
+    \item Auxiliary matrices:
+  \end{itemize}
+
+  \[
+    c_0=
+    \begin{pmatrix}
+      a & b \\ a & b
+    \end{pmatrix}, \qquad
+    c_1=
+    \begin{pmatrix}
+      b & -a \\ -b & a
+    \end{pmatrix}
+  \]
+ 
+\end{frame}
+
+\begin{frame}{Construction}
+
+  \begin{itemize}
+    \item Form the sequences
+  \end{itemize}
+
+  $$
+  \alpha = (c_0,c_1,c_1), \qquad \beta = (c_0,c_1,-c_1).
+  $$
+
+  \begin{itemize}
+    \item The sum of the periodic correlations of $\alpha$ and $\beta$ satisfy
+  \end{itemize}
+
+  $$
+  \sum_i \alpha_i\alpha_{i+j}^t + \sum_i \beta_i\beta_{i+j}^t = O, \qquad j=1,2.
+  $$
+
+  \begin{itemize}
+    \item Sums of cross-correlations
+  \end{itemize}
+
+  $$
+  \sum_i \alpha_i\beta_{i+j}^t + \sum_i \beta_i\alpha_{i+j}^t = O, \qquad j=1,2.
+  $$
+
+\end{frame}
+
+\begin{frame}{Construction}
+
+  \begin{itemize}
+  \item Form the matrices
+  \end{itemize}
+
+  $$
+  A=circ(\alpha), \qquad B=circ(\beta),
+  $$
+
+  \begin{itemize}
+    \item Then the matrix
+  \end{itemize}
+
+  $$
+  \Theta = \begin{pmatrix}
+                A & B \\ B & A
+              \end{pmatrix}.
+  $$
+
+\end{frame}
+
+\begin{frame}{Construction}
+
+  \[
+    \Theta = 
+    % \arraycolsep=1.0pt\def\arraystretch{0.75}
+    \left(
+      \begin{array}{cccccc|cccccc}
+        a&b&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a\\
+        a&b&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}\\
+        b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}\\
+        \bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a\\
+        b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a&a&b\\
+        \bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b\\ \hline
+        a&b&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}\\
+        a&b&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a\\
+        \bar{b}&a&a&b&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}\\
+        b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a\\
+        b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}&a&b\\
+        \bar{b}&a&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b\\
+      \end{array}
+    \right)
+  \]
+  
+\end{frame}
+
+\begin{frame}{Construction}
+
+  \[
+    \Theta\Theta^t =
+    \begin{pmatrix}
+      AA^t + BB^t & AB^t + BA^t \\ AB^t + BA^t & AA^t + BB^t
+    \end{pmatrix}.
+  \]
+  
+\end{frame}
+
+\begin{frame}{Construction}
+
+  \[
+    \Theta\Theta^t = (a^2+b^2)
+    \left(
+      \begin{array}{cccccc|cccccc}
+        6&\bar{2}&0&0&0&0&2&2&0&0&0&0\\
+        \bar{2}&6&0&0&0&0&2&2&0&0&0&0\\
+        0&0&6&\bar{2}&0&0&0&0&2&2&0&0\\
+        0&0&\bar{2}&6&0&0&0&0&2&2&0&0\\
+        0&0&0&0&6&\bar{2}&0&0&0&0&2&2\\
+        0&0&0&0&\bar{2}&6&0&0&0&0&2&2\\ \hline
+        2&2&0&0&0&0&6&\bar{2}&0&0&0&0\\
+        2&2&0&0&0&0&\bar{2}&6&0&0&0&0\\
+        0&0&2&2&0&0&0&0&6&\bar{2}&0&0\\
+        0&0&2&2&0&0&0&0&\bar{2}&6&0&0\\
+        0&0&0&0&2&2&0&0&0&0&6&\bar{2}\\
+        0&0&0&0&2&2&0&0&0&0&\bar{2}&6\\
+      \end{array}
+    \right)
+  \]
+  
+\end{frame}
+
+\begin{frame}{Construction}
+  
+  \[
+    \arraycolsep=2.0pt\def\arraystretch{0.75}
+    \left(
+      \begin{array}{cccc|cccccc|cccccc}
+        *&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*\\
+        *&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*\\
+        *&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*\\
+        *&*&*&*&*&*&*&*&*&*&*&*&*&*&*&*\\ \hline
+        *&*&*&*&a&b&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a\\
+        *&*&*&*&a&b&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}\\
+        *&*&*&*&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}\\
+        *&*&*&*&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a\\
+        *&*&*&*&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a&a&b\\
+        *&*&*&*&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b\\ \hline
+        *&*&*&*&a&b&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}\\
+        *&*&*&*&a&b&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a\\
+        *&*&*&*&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}\\
+        *&*&*&*&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a\\
+        *&*&*&*&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}&a&b\\
+        *&*&*&*&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b\\
+      \end{array}
+    \right)
+  \]
+
+\end{frame}
+
+\begin{frame}{Construction}
+
+  \begin{itemize}
+    \item Define:
+  \end{itemize}
+
+  \begin{align*}
+    Y &= \left( \begin{smallmatrix} 1&1\\1&- \end{smallmatrix} \right) \otimes X,\\
+    K &= \left( \begin{smallmatrix} 1&1\\1&- \end{smallmatrix} \right) \otimes H.
+  \end{align*}
+
+  \begin{itemize}
+    \item Index rows as $y_0, \dots, y_{2n-1}$, and $k_0, \dots, k_{2n-1}$.
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Construction}
+
+  \[
+    \begin{array}{cc}
+      Y = \left( \begin{smallmatrix} 1&1\\1&- \end{smallmatrix} \right) \otimes X
+                                           &
+      K = \left( \begin{smallmatrix} 1&1\\1&- \end{smallmatrix} \right) \otimes H
+      \\
+      \text{Rows: } y_0, \dots, y_{2n-1}
+                                      &
+      \text{Rows: } k_0, \dots, k_{2n-1}
+    \end{array}
+  \]
+
+  \begin{itemize}
+    \item Form
+  \end{itemize}
+
+  \begin{align*}
+    F &= \begin{pmatrix} k_1^tx_0 & k_2^tx_0 & k_3^tx_0 \end{pmatrix}, \\
+    E &= \begin{pmatrix} h_0^ty_1 \\ h_0^ty_2 \\ h_0^ty_3 \end{pmatrix}, \\
+    G &= k_0^ty_0.
+  \end{align*}
+  
+\end{frame}
+
+\begin{frame}{Construction}
+
+  \[
+    \left(
+      \begin{array}{c|c|c}
+        G & F & -F \\ \hline
+        E
+          &
+            \begin{array}{cccccc}
+              a&b&b&\bar{a}&b&\bar{a}\\
+              a&b&\bar{b}&a&\bar{b}&a\\
+              b&\bar{a}&a&b&b&\bar{a}\\
+              \bar{b}&a&a&b&\bar{b}&a\\
+              b&\bar{a}&b&\bar{a}&a&b\\
+              \bar{b}&a&\bar{b}&a&a&b\\
+            \end{array}
+          &
+          \begin{array}{cccccc}
+            a&b&b&\bar{a}&\bar{b}&a\\
+            a&b&\bar{b}&a&b&\bar{a}\\
+            \bar{b}&a&a&b&b&\bar{a}\\
+            b&\bar{a}&a&b&\bar{b}&a\\
+            b&\bar{a}&\bar{b}&a&a&b\\
+            \bar{b}&a&b&\bar{a}&a&b\\
+          \end{array} 
+        \\ \hline
+        -E
+          &
+            \begin{array}{cccccc}
+              a&b&b&\bar{a}&\bar{b}&a\\
+              a&b&\bar{b}&a&b&\bar{a}\\
+              \bar{b}&a&a&b&b&\bar{a}\\
+              b&\bar{a}&a&b&\bar{b}&a\\
+              b&\bar{a}&\bar{b}&a&a&b\\
+              \bar{b}&a&b&\bar{a}&a&b\\
+            \end{array}
+          &
+            \begin{array}{cccccc}
+              a&b&b&\bar{a}&b&\bar{a}\\
+              a&b&\bar{b}&a&\bar{b}&a\\
+              b&\bar{a}&a&b&b&\bar{a}\\
+              \bar{b}&a&a&b&\bar{b}&a\\
+              b&\bar{a}&b&\bar{a}&a&b\\
+              \bar{b}&a&\bar{b}&a&a&b\\
+            \end{array}
+      \end{array}
+    \right)
+  \]
+  
+\end{frame}
+
+\begin{frame}{Construction}
+
+  \[
+    \arraycolsep=2.0pt\def\arraystretch{0.75}
+    \left(
+      \begin{array}{cccc|cccccc|cccccc}
+        a&b&a&b&a&b&a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&\bar{a}&\bar{b}\\
+        a&b&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&\bar{b}&a&b\\
+        a&b&a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&\bar{a}&\bar{b}&a&b&a&b\\
+        a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&a&b&a&b&a&b&\bar{a}&\bar{b}\\\hline
+        b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a\\
+        b&\bar{a}&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}\\
+        a&b&\bar{a}&\bar{b}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}\\
+        a&b&\bar{a}&\bar{b}&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a\\
+        b&\bar{a}&\bar{b}&a&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a&a&b\\
+        b&\bar{a}&\bar{b}&a&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b\\\hline
+        \bar{b}&a&\bar{b}&a&a&b&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}\\
+        \bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a\\
+        \bar{a}&\bar{b}&a&b&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}\\
+        \bar{a}&\bar{b}&a&b&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a\\
+        \bar{b}&a&b&\bar{a}&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}&a&b\\
+        \bar{b}&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b\\
+      \end{array}
+    \right)
+  \]
+  
+\end{frame}
+
+\begin{frame}{Construction}
+
+  \[
+    \arraycolsep=2.0pt\def\arraystretch{0.75}
+    \left(
+      \begin{array}{cccccccccccccccc}
+        a&b&a&b&a&b&a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&\bar{a}&\bar{b}\\
+        a&b&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&\bar{b}&a&b\\
+        a&b&a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&\bar{a}&\bar{b}&a&b&a&b\\
+        a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&a&b&a&b&a&b&\bar{a}&\bar{b}\\
+        b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a\\
+        b&\bar{a}&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}\\
+        a&b&\bar{a}&\bar{b}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}\\
+        a&b&\bar{a}&\bar{b}&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a\\
+        b&\bar{a}&\bar{b}&a&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a&a&b\\
+        b&\bar{a}&\bar{b}&a&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b\\
+        \bar{b}&a&\bar{b}&a&a&b&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}\\
+        \bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a\\
+        \bar{a}&\bar{b}&a&b&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}\\
+        \bar{a}&\bar{b}&a&b&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a\\
+        \bar{b}&a&b&\bar{a}&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}&a&b\\
+        \bar{b}&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b\\
+      \end{array}
+    \right)
+  \]
+  
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Complex and Quaternion Elements}
+  \begin{itemize}
+    \item The following is a $OD(2;1,1)$ of quaternions.
+  \end{itemize}
+
+  \[
+  \begin{pmatrix}
+    \bar{a} & bi \\
+    \bar{b}j & ak
+  \end{pmatrix},
+  \]
+
+  \begin{itemize}
+    \item where $a$ and $b$ are real variables.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Complex and Quaternion Elements}
+
+  \[
+    \arraycolsep=2.0pt\def\arraystretch{0.75}
+    \left(
+      \begin{array}{cccc|cccccc|cccccc}
+        \bar{a}&bi&\bar{a}&bi&\bar{a}&bi&\bar{a}&bi&\bar{a}&bi& a&\bar{b}i& a&\bar{b}i& a&\bar{b}i\\
+        \bar{a}&bi&\bar{a}&bi& a&\bar{b}i&\bar{a}&bi& a&\bar{b}i&\bar{a}&bi& a&\bar{b}i&\bar{a}&bi\\
+        \bar{a}&bi&\bar{a}&bi&\bar{a}&bi& a&\bar{b}i& a&\bar{b}i& a&\bar{b}i&\bar{a}&bi&\bar{a}&bi\\
+        \bar{a}&bi&\bar{a}&bi& a&\bar{b}i& a&\bar{b}i&\bar{a}&bi&\bar{a}&bi&\bar{a}&bi& a&\bar{b}i\\\hline
+        \bar{b}j&ak&\bar{b}j&ak&\bar{a}&bi&\bar{b}j&ak&\bar{b}j&ak&\bar{a}&bi&\bar{b}j&ak&bj&\bar{a}k\\
+        \bar{b}j&ak&\bar{b}j&ak&\bar{a}&bi&bj&\bar{a}k&bj&\bar{a}k&\bar{a}&bi&bj&\bar{a}k&\bar{b}j&ak\\
+        \bar{a}&bi& a&\bar{b}i&\bar{b}j&ak&\bar{a}&bi&\bar{b}j&ak&bj&\bar{a}k&\bar{a}&bi&\bar{b}j&ak\\
+        \bar{a}&bi& a&\bar{b}i&bj&\bar{a}k&\bar{a}&bi&bj&\bar{a}k&\bar{b}j&ak&\bar{a}&bi&bj&\bar{a}k\\
+        \bar{b}j&ak&bj&\bar{a}k&\bar{b}j&ak&\bar{b}j&ak&\bar{a}&bi&\bar{b}j&ak&bj&\bar{a}k&\bar{a}&bi\\
+        \bar{b}j&ak&bj&\bar{a}k&bj&\bar{a}k&bj&\bar{a}k&\bar{a}&bi&bj&\bar{a}k&\bar{b}j&ak&\bar{a}&bi\\\hline
+        bj&\bar{a}k&bj&\bar{a}k&\bar{a}&bi&\bar{b}j&ak&bj&\bar{a}k&\bar{a}&bi&\bar{b}j&ak&\bar{b}j&ak\\
+        bj&\bar{a}k&bj&\bar{a}k&\bar{a}&bi&bj&\bar{a}k&\bar{b}j&ak&\bar{a}&bi&bj&\bar{a}k&bj&\bar{a}k\\
+        a&\bar{b}i&\bar{a}&bi&bj&\bar{a}k&\bar{a}&bi&\bar{b}j&ak&\bar{b}j&ak&\bar{a}&bi&\bar{b}j&ak\\
+        a&\bar{b}i&\bar{a}&bi&\bar{b}j&ak&\bar{a}&bi&bj&\bar{a}k&bj&\bar{a}k&\bar{a}&bi&bj&\bar{a}k\\
+        bj&\bar{a}k&\bar{b}j&ak&\bar{b}j&ak&bj&\bar{a}k&\bar{a}&bi&\bar{b}j&ak&\bar{b}j&ak&\bar{a}&bi\\
+        bj&\bar{a}k&\bar{b}j&ak&bj&\bar{a}k&\bar{b}j&ak&\bar{a}&bi&bj&\bar{a}k&bj&\bar{a}k&\bar{a}&bi\\
+      \end{array}
+    \right)
+  \]
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+
+  \begin{block}{Definition: Equiangular Lines}
+    A collection $\mathcal{L} \subset \mathbb{R}^\ell$ of lines (vectors) are
+    equiangular if there is a constant $a$ such that $|\langle u,v \rangle| = a$ for
+    every $u,v \in L$.
+  \end{block}
+
+  \begin{block}{Definition: Unbiased Hadamard Matrices}
+    Hadamard matrices $H$ and $K$ are unbiased if
+    \[
+      HK^t = \sqrt{n}L
+    \]
+    for some Hadamard matrix $L$.
+  \end{block}
+  
+\end{frame}
+
+\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+
+  \[
+    H=
+    \arraycolsep=1.0pt\def\arraystretch{0.75}
+    \left(\begin{array}{cccccccccccccccc}
+            1&1&1&1&1&1&1&1&1&1&-&-&-&-&-&-\\
+            1&1&1&1&-&-&1&1&-&-&1&1&-&-&1&1\\
+            1&1&1&1&1&1&-&-&-&-&-&-&1&1&1&1\\
+            1&1&1&1&-&-&-&-&1&1&1&1&1&1&-&-\\
+            1&-&1&-&1&1&1&-&1&-&1&1&1&-&-&1\\
+            1&-&1&-&1&1&-&1&-&1&1&1&-&1&1&-\\
+            1&1&-&-&1&-&1&1&1&-&-&1&1&1&1&-\\
+            1&1&-&-&-&1&1&1&-&1&1&-&1&1&-&1\\
+            1&-&-&1&1&-&1&-&1&1&1&-&-&1&1&1\\
+            1&-&-&1&-&1&-&1&1&1&-&1&1&-&1&1\\
+            -&1&-&1&1&1&1&-&-&1&1&1&1&-&1&-\\
+            -&1&-&1&1&1&-&1&1&-&1&1&-&1&-&1\\
+            -&-&1&1&-&1&1&1&1&-&1&-&1&1&1&-\\
+            -&-&1&1&1&-&1&1&-&1&-&1&1&1&-&1\\
+            -&1&1&-&1&-&-&1&1&1&1&-&1&-&1&1\\
+            -&1&1&-&-&1&1&-&1&1&-&1&-&1&1&1\\
+          \end{array}\right)
+  \]
+
+  \begin{itemize}
+  \item a Hadamard matrix of order 16
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+
+   \[
+     H=
+    \arraycolsep=1.0pt\def\arraystretch{0.75}
+    \left(\begin{array}{cccc|cccccc|cccccc}
+            1&1&1&1&\bblue{1}&\bblue{1}&\bblue{1}&\bblue{1}&\bblue{1}&\bblue{1}&-&-&-&-&-&-\\
+            1&1&1&1&\bblue{-}&\bblue{-}&\bblue{1}&\bblue{1}&\bblue{-}&\bblue{-}&1&1&-&-&1&1\\
+            1&1&1&1&\bblue{1}&\bblue{1}&\bblue{-}&\bblue{-}&\bblue{-}&\bblue{-}&-&-&1&1&1&1\\
+            1&1&1&1&\bblue{-}&\bblue{-}&\bblue{-}&\bblue{-}&\bblue{1}&\bblue{1}&1&1&1&1&-&-\\
+            1&-&1&-&\bblue{1}&\bblue{1}&\bblue{1}&\bblue{-}&\bblue{1}&\bblue{-}&1&1&1&-&-&1\\
+            1&-&1&-&\bblue{1}&\bblue{1}&\bblue{-}&\bblue{1}&\bblue{-}&\bblue{1}&1&1&-&1&1&-\\
+            1&1&-&-&\bblue{1}&\bblue{-}&\bblue{1}&\bblue{1}&\bblue{1}&\bblue{-}&-&1&1&1&1&-\\
+            1&1&-&-&\bblue{-}&\bblue{1}&\bblue{1}&\bblue{1}&\bblue{-}&\bblue{1}&1&-&1&1&-&1\\
+            1&-&-&1&\bblue{1}&\bblue{-}&\bblue{1}&\bblue{-}&\bblue{1}&\bblue{1}&1&-&-&1&1&1\\
+            1&-&-&1&\bblue{-}&\bblue{1}&\bblue{-}&\bblue{1}&\bblue{1}&\bblue{1}&-&1&1&-&1&1\\
+            -&1&-&1&\bblue{1}&\bblue{1}&\bblue{1}&\bblue{-}&\bblue{-}&\bblue{1}&1&1&1&-&1&-\\
+            -&1&-&1&\bblue{1}&\bblue{1}&\bblue{-}&\bblue{1}&\bblue{1}&\bblue{-}&1&1&-&1&-&1\\
+            -&-&1&1&\bblue{-}&\bblue{1}&\bblue{1}&\bblue{1}&\bblue{1}&\bblue{-}&1&-&1&1&1&-\\
+            -&-&1&1&\bblue{1}&\bblue{-}&\bblue{1}&\bblue{1}&\bblue{-}&\bblue{1}&-&1&1&1&-&1\\
+            -&1&1&-&\bblue{1}&\bblue{-}&\bblue{-}&\bblue{1}&\bblue{1}&\bblue{1}&1&-&1&-&1&1\\
+            -&1&1&-&\bblue{-}&\bblue{1}&\bblue{1}&\bblue{-}&\bblue{1}&\bblue{1}&-&1&-&1&1&1\\
+          \end{array}\right)
+      \]
+
+      \begin{itemize}
+      \item a balanced split
+      \end{itemize}
+ 
+\end{frame}
+
+\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+
+  \[
+    \arraycolsep=1.0pt\def\arraystretch{0.75}
+    \left(
+    \begin{array}{cccccc}
+      1&1&1&1&1&1\\
+      -&-&1&1&-&-\\
+      1&1&-&-&-&-\\
+      -&-&-&-&1&1\\
+      1&1&1&-&1&-\\
+      1&1&-&1&-&1\\
+      1&-&1&1&1&-\\
+      -&1&1&1&-&1\\
+      1&-&1&-&1&1\\
+      -&1&-&1&1&1\\
+      1&1&1&-&-&1\\
+      1&1&-&1&1&-\\
+      -&1&1&1&1&-\\
+      1&-&1&1&-&1\\
+      1&-&-&1&1&1\\
+      -&1&1&-&1&1\\
+    \end{array}
+    \right)
+  \]
+
+  \begin{itemize}
+    \item a collection of equiangular lines
+    \item products are the same in absolute value
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+
+  \[
+    K=
+    \arraycolsep=1.0pt\def\arraystretch{0.75}
+    \left(
+      \begin{array}{cccc|cccccc|cccccc}
+        1&1&1&1&\rred{-}&\rred{-}&\rred{-}&\rred{-}&\rred{-}&\rred{-}&-&-&-&-&-&-\\
+        1&1&1&1&\rred{1}&\rred{1}&\rred{-}&\rred{-}&\rred{1}&\rred{1}&1&1&-&-&1&1\\
+        1&1&1&1&\rred{-}&\rred{-}&\rred{1}&\rred{1}&\rred{1}&\rred{1}&-&-&1&1&1&1\\
+        1&1&1&1&\rred{1}&\rred{1}&\rred{1}&\rred{1}&\rred{-}&\rred{-}&1&1&1&1&-&-\\
+        1&-&1&-&\rred{-}&\rred{-}&\rred{-}&\rred{1}&\rred{-}&\rred{1}&1&1&1&-&-&1\\
+        1&-&1&-&\rred{-}&\rred{-}&\rred{1}&\rred{-}&\rred{1}&\rred{-}&1&1&-&1&1&-\\
+        1&1&-&-&\rred{-}&\rred{1}&\rred{-}&\rred{-}&\rred{-}&\rred{1}&-&1&1&1&1&-\\
+        1&1&-&-&\rred{1}&\rred{-}&\rred{-}&\rred{-}&\rred{1}&\rred{-}&1&-&1&1&-&1\\
+        1&-&-&1&\rred{-}&\rred{1}&\rred{-}&\rred{1}&\rred{-}&\rred{-}&1&-&-&1&1&1\\
+        1&-&-&1&\rred{1}&\rred{-}&\rred{1}&\rred{-}&\rred{-}&\rred{-}&-&1&1&-&1&1\\
+        -&1&-&1&\rred{-}&\rred{-}&\rred{-}&\rred{1}&\rred{1}&\rred{-}&1&1&1&-&1&-\\
+        -&1&-&1&\rred{-}&\rred{-}&\rred{1}&\rred{-}&\rred{-}&\rred{1}&1&1&-&1&-&1\\
+        -&-&1&1&\rred{1}&\rred{-}&\rred{-}&\rred{-}&\rred{-}&\rred{1}&1&-&1&1&1&-\\
+        -&-&1&1&\rred{-}&\rred{1}&\rred{-}&\rred{-}&\rred{1}&\rred{-}&-&1&1&1&-&1\\
+        -&1&1&-&\rred{-}&\rred{1}&\rred{1}&\rred{-}&\rred{-}&\rred{-}&1&-&1&-&1&1\\
+        -&1&1&-&\rred{1}&\rred{-}&\rred{-}&\rred{1}&\rred{-}&\rred{-}&-&1&-&1&1&1\\
+      \end{array}
+    \right)
+  \]
+
+  \begin{itemize}
+    \item $H$ and $K$ are unbiased
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+
+  \begin{block}{Proposition \cite[][]{splittable-hadamard}}
+    $H = \left( \begin{smallmatrix} H_1 & H_2 \end{smallmatrix} \right)$ a
+    Hadamard matrix of order $n$ with
+    \[
+      H_1H_1^t = \ell I_n + aS
+    \]
+    where $S$ is a $(-1,0,1)$-matrix. The following are equivalent:
+    \begin{enumerate}
+      \item $K = \left( \begin{smallmatrix} -H_1 & H_2 \end{smallmatrix}
+        \right)$ is unbiased with $H$, and
+      \item $(\ell,a) = ((n \pm \sqrt{n})/2,\sqrt{n}/2)$.
+    \end{enumerate}
+  \end{block}
+  
+\end{frame}
+
+\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+
+  \[
+    \begin{pmatrix}
+      G & F & \bblue{-F} \\
+      E & A & \bblue{B} \\
+      -E & B & \bblue{A}
+    \end{pmatrix}
+  \]
+  
+\end{frame}
+
+\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+
+  \[
+    \begin{pmatrix}
+      G & \bblue{F} & -F \\
+      E & \bblue{A} & B \\
+      -E & \bblue{B} & A
+    \end{pmatrix}
+  \]
+  
+\end{frame}
+
+\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+
+  \[
+    \begin{pmatrix}
+      G & F & -F \\
+      \bblue{E} & \bblue{A} & \bblue{B} \\
+      -E & B & A
+    \end{pmatrix}
+  \]
+  
+\end{frame}
+
+\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+
+  \[
+    \begin{pmatrix}
+      G & F & -F \\
+      E & A & B \\
+      \bblue{-E} & \bblue{B} & \bblue{A}
+    \end{pmatrix}
+  \]
+  
+\end{frame}
+
+\begin{frame}{Equiangular Lines and Hadamard Matrices}
+
+  \begin{itemize}
+  \item each split gives equiangular lines
+  \item parametric conditions of the proposition are satisfied
+  \item we can always construct unbiased Hadamard matrices
+  \end{itemize}
+  
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{frame}{Unbiased ODs}
+
+  \begin{block}{Definition: Unbiased ODs \cite[][]{unbiased-od}}
+    \begin{itemize}
+    \item $X_1$ and $X_2$ be two $OD(n,s_1, \dots,s_u)$ in $\{\pm z_1, \dots,
+      \pm z_u\}$.
+    \item $X_1$ and $X_2$ are unbiased if there is a Hadamard matrix $H$ such that
+      \[
+        X_1X_2^t = \left( \alpha^{-\frac{1}{2}}\sum_i s_iz_i^2 \right)H.
+      \]
+      for some $\alpha \in \mathbb{R}^+$.
+    \end{itemize}
+  \end{block}
+
+  \begin{itemize}
+  \pause\item
+    \[
+      \left\{
+      \begin{array}{l}
+        \text{stable split} \\
+        \text{equiangular lines} \\
+        \text{param. cond.}
+      \end{array} \right\}
+      \Rightarrow
+      \text{unbiased ODs}
+    \]
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Unbiased ODs}
+
+  \begin{itemize}
+    \item Recall:
+      \[
+        X = \begin{pmatrix}
+              G & F & \bblue{-F} \\
+              E & A & \bblue{B} \\
+              -E & B & \bblue{A}
+            \end{pmatrix}.
+      \]
+    \item Take
+      \[
+        Y = \begin{pmatrix}
+              G & F & \rred{F} \\
+              E & A & \rred{-B} \\
+              -E & B & \rred{-A}
+            \end{pmatrix}.
+      \]
+    \item Then $XY^t = 2\left( \sum_is_iz_i^2 \right)H$, where $H$ is Hadamard.
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Unbiased ODs}
+
+  \begin{tiny}
+  \[
+    \arraycolsep=2.0pt\def\arraystretch{0.75}
+    \left(
+      \begin{array}{cccccccccccccccc}
+        a&b&a&b&a&b&a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&\bar{a}&\bar{b}\\
+        a&b&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&\bar{b}&a&b\\
+        a&b&a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&\bar{a}&\bar{b}&a&b&a&b\\
+        a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&a&b&a&b&a&b&\bar{a}&\bar{b}\\
+        b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a\\
+        b&\bar{a}&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}\\
+        a&b&\bar{a}&\bar{b}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}\\
+        a&b&\bar{a}&\bar{b}&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a\\
+        b&\bar{a}&\bar{b}&a&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a&a&b\\
+        b&\bar{a}&\bar{b}&a&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b\\
+        \bar{b}&a&\bar{b}&a&a&b&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}\\
+        \bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a\\
+        \bar{a}&\bar{b}&a&b&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}\\
+        \bar{a}&\bar{b}&a&b&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a\\
+        \bar{b}&a&b&\bar{a}&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}&a&b\\
+        \bar{b}&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b\\
+      \end{array}
+    \right)
+    \cdot
+    \left(
+      \begin{array}{cccccccccccccccc}
+        a&a&a&a&b&b&a&a&b&b&\bar{b}&\bar{b}&\bar{a}&\bar{a}&\bar{b}&\bar{b}\\
+        b&b&b&b&\bar{a}&\bar{a}&b&b&\bar{a}&\bar{a}&a&a&\bar{b}&\bar{b}&a&a\\
+        a&a&a&a&b&b&\bar{a}&\bar{a}&\bar{b}&\bar{b}&\bar{b}&\bar{b}&a&a&b&b\\
+        b&b&b&b&\bar{a}&\bar{a}&\bar{b}&\bar{b}&a&a&a&a&b&b&\bar{a}&\bar{a}\\
+        a&\bar{a}&a&\bar{a}&a&a&b&\bar{b}&b&\bar{b}&a&a&\bar{b}&b&b&\bar{b}\\
+        b&\bar{b}&b&\bar{b}&b&b&\bar{a}&a&\bar{a}&a&b&b&a&\bar{a}&\bar{a}&a\\
+        a&a&\bar{a}&\bar{a}&b&\bar{b}&a&a&b&\bar{b}&b&\bar{b}&a&a&\bar{b}&b\\
+        b&b&\bar{b}&\bar{b}&\bar{a}&a&b&b&\bar{a}&a&\bar{a}&a&b&b&a&\bar{a}\\
+        a&\bar{a}&\bar{a}&a&b&\bar{b}&b&\bar{b}&a&a&\bar{b}&b&b&\bar{b}&a&a\\
+        b&\bar{b}&\bar{b}&b&\bar{a}&a&\bar{a}&a&b&b&a&\bar{a}&\bar{a}&a&b&b\\
+        a&\bar{a}&a&\bar{a}&\bar{a}&\bar{a}&b&\bar{b}&\bar{b}&b&\bar{a}&\bar{a}&\bar{b}&b&\bar{b}&b\\
+        b&\bar{b}&b&\bar{b}&\bar{b}&\bar{b}&\bar{a}&a&a&\bar{a}&\bar{b}&\bar{b}&a&\bar{a}&a&\bar{a}\\
+        a&a&\bar{a}&\bar{a}&\bar{b}&b&\bar{a}&\bar{a}&b&\bar{b}&\bar{b}&b&\bar{a}&\bar{a}&\bar{b}&b\\
+        b&b&\bar{b}&\bar{b}&a&\bar{a}&\bar{b}&\bar{b}&\bar{a}&a&a&\bar{a}&\bar{b}&\bar{b}&a&\bar{a}\\
+        a&\bar{a}&\bar{a}&a&b&\bar{b}&\bar{b}&b&\bar{a}&\bar{a}&\bar{b}&b&\bar{b}&b&\bar{a}&\bar{a}\\
+        b&\bar{b}&\bar{b}&b&\bar{a}&a&a&\bar{a}&\bar{b}&\bar{b}&a&\bar{a}&a&\bar{a}&\bar{b}&\bar{b}\\
+      \end{array}
+    \right)
+  \]
+  \end{tiny}
+
+\end{frame}
+
+\begin{frame}{Unbiased ODs}
+  
+  \[
+    2(a^2+b^2)
+    \arraycolsep=2.0pt\def\arraystretch{0.75}
+    \left(
+      \begin{array}{cccccccccccccccc}
+        1&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1\\
+        1&1&1&1&-&-&1&1&-&-&-&-&1&1&-&-\\
+        1&1&1&1&1&1&-&-&-&-&1&1&-&-&-&-\\
+        1&1&1&1&-&-&-&-&1&1&-&-&-&-&1&1\\
+        1&-&1&-&1&1&1&-&1&-&-&-&1&-&-&1\\
+        1&-&1&-&1&1&-&1&-&1&-&-&-&1&1&-\\
+        1&1&-&-&1&-&1&1&1&-&-&1&-&-&1&-\\
+        1&1&-&-&-&1&1&1&-&1&1&-&-&-&-&1\\
+        1&-&-&1&1&-&1&-&1&1&1&-&-&1&-&-\\
+        1&-&-&1&-&1&-&1&1&1&-&1&1&-&-&-\\
+        1&-&1&-&-&-&-&1&1&-&1&1&-&1&-&1\\
+        1&-&1&-&-&-&1&-&-&1&1&1&1&-&1&-\\
+        1&1&-&-&1&-&-&-&-&1&-&1&1&1&-&1\\
+        1&1&-&-&-&1&-&-&1&-&1&-&1&1&1&-\\
+        1&-&-&1&-&1&1&-&-&-&-&1&-&1&1&1\\
+        1&-&-&1&1&-&-&1&-&-&1&-&1&-&1&1\\
+      \end{array}
+    \right)
+  \]
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{frame}
+
+  \begin{center}
+    {\huge\bf The End!!}\\
+    
+    {\bf Thank You!}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}{References}
+  \bibliographystyle{apalike}
+  \bibliography{mybib.bib}
+\end{frame}
+
+\end{document}

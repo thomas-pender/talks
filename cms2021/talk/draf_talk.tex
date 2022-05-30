@@ -1,0 +1,308 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+%\usetikzlibrary{calc}
+%\pgfplotsset{compat=1.8}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\M}{\mathrm{A}}
+\newcommand{\w}{\mathrm{W}}
+\newcommand{\C}{\mathscr{C}}
+\newcommand{\wt}{\mathrm{wt}}
+\newcommand{\bgw}{\mathrm{BGW}}
+\newcommand{\gf}{\mathrm{GF}}
+\newcommand{\tr}{\mathrm{Tr}}
+
+\usepackage{background}
+\backgroundsetup{
+    placement=center,
+    scale=4,
+    contents={DRAFT},
+    opacity=1
+}
+\setbeamertemplate{background}{\BgMaterial}
+
+\title[BGWs and Codes]{Balanced Generalized Weighing Matrices and Optimal Codes}
+%\subtitle{}
+\author[T. Pender]{Thomas Pender}
+\institute[U of L]{University of Lethbridge\\Department of Mathematics and Computer Science}
+\date[CMS Dec 2021]{Canadian Mathematical Society Winter Meeting\\Decemeber 2021}
+
+\begin{document}
+
+\begin{frame}
+ \titlepage
+ \centering{\scriptsize $^{***}$Joint work with Hadi Kharaghani, Sho Suda, Vlad Zatiev}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Codes---Definition}
+ \begin{itemize}
+  \item Finite collection of ``strings'' of given length over a given finite alphabet.
+  \item Finite alphabet $\A$ with distinguished letter ``0'' called zero.
+  \item Every $\C \subseteq \A^n$ is a code.
+  \item Write $\C$ is an $(n,M,d)_a$--code, where
+  \begin{itemize}
+  \item $M = |\C|$
+  \item $a = |\A|$
+  \item $d$ is the Hamming distance (def. below).
+  \end{itemize}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Codes---Hamming Weight}
+ \begin{itemize}
+  \item Weight of a codeword $c=c_0 \cdots c_{n-1}$.
+  $$
+  \wt(c) = \#\{i : c_i \neq 0\}
+  $$
+  \item Weight of $\C$.
+  $$
+  \wt(\C) = \min_{c \in \C}\wt(c).
+  $$
+  \item $\C$ is constant weight if $\#\{\wt(c) : c \in \C\} = 1$.
+  \item Assume $\C$ is constant weight with $\wt(\C)=w$.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Codes---Hamming Distance}
+ \begin{itemize}
+  \item Distance between code words $c=c_0 \cdots c_{n-1}$ and $c'=c_0' \cdots c_{n-1}'$.
+  $$
+  d(c,c') = \#\{i : c_i \neq c_i'\}
+  $$
+  \item Distance of $\C$.
+  $$
+  d(\C) = \min_{\begin{smallmatrix}c,c' \in \C^2 \\ c \neq c'\end{smallmatrix}} d(c,c')
+  $$
+  \item $\C$ is equidistant if $\#\{d(c,c') : c,c' \in \C, c \neq c'\} = 1$.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Codes---Restricted Johnson Bound}
+ \begin{itemize}
+  \item Fundamental question to maximize $M$ given $n$, $d$, $w$ and $a$.
+  \item Denote this max by $\M_a(n,d,w)$.
+ \end{itemize}
+ \begin{block}{Restricted Johnson Bound}
+ \begin{equation}\label{eq1}
+  \M_a(n,d,w) \leqq \left\lfloor \frac{nd(a-1)}{aw^2-2(a-1)nw+nd(a-1)} \right\rfloor
+ \end{equation}
+ \end{block}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Codes---Example}
+ \begin{itemize}
+  \item $\A = \{-,0,1\}$, where $-$ represents $-1$.
+ \end{itemize}
+ \pause
+ \begin{scriptsize}
+ \[
+ \arraycolsep=1.0pt\def\arraystretch{1.0}
+ \begin{array}{rrrrrrrr}
+1 & 1 & 1 & - & 0 & - & - & 1 \\ \pause
+- & 1 & 1 & 1 & - & 0 & - & - \\ \pause
+1 & - & 1 & 1 & 1 & - & 0 & - \\ \pause
+1 & 1 & - & 1 & 1 & 1 & - & 0 \\ \pause
+0 & 1 & 1 & - & 1 & 1 & 1 & - \\ \pause
+1 & 0 & 1 & 1 & - & 1 & 1 & 1 \\ \pause
+- & 1 & 0 & 1 & 1 & - & 1 & 1 \\ \pause 
+- & - & 1 & 0 & 1 & 1 & - & 1 \\ \pause 
+- & - & - & 1 & 0 & 1 & 1 & - \\
+1 & - & - & - & 1 & 0 & 1 & 1 \\
+- & 1 & - & - & - & 1 & 0 & 1 \\
+- & - & 1 & - & - & - & 1 & 0 \\
+0 & - & - & 1 & - & - & - & 1 \\
+- & 0 & - & - & 1 & - & - & - \\
+1 & - & 0 & - & - & 1 & - & - \\
+1 & 1 & - & 0 & - & - & 1 & -
+\end{array}
+\]
+\end{scriptsize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Codes---Example cont.}
+ \begin{itemize}
+  \item $n=8$, $a=3$, $d=5$, $w=7$.
+  \item Extremal case of (\ref{eq1}).
+  \item Consequence of the following result due to \"{O}sterg\r{a}rd, Svanstr\"{o}m \cite{cont-tern-code}.
+ \end{itemize}
+ \begin{block}{Theorem}
+  If $p$ is an odd prime,
+  \begin{equation}\label{eq2}
+  \M_3(p^m+1,(p^m+3)/2,p^m) = 2p^m+2,
+  \end{equation}
+  for $m \geqq 1$.
+ \end{block}
+\end{frame}
+
+\begin{frame}
+ \frametitle{(Balanced) Weighing Matrices---Definition}
+ \begin{itemize}
+  \item $(-1,0,1)$-matrix $W$ of order $v$ such that $WW^t = kI_v$, for some $k$.
+  \item $k$ is the weight of the matrix.
+  \item Denoted $\w(v,k)$.
+  \item The $\w(v,v)$ are the Hadamard matrices, and $\w(v,v-1)$ are the conference matrices.
+  \item If $W*W$ is an SBIBD, then $W$ is balanced.
+  \item Every conference matrix is balanced.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Weighing Matrices---Example}
+ \begin{itemize}
+  \item The first seven codewords of the previous example form a $\w(8,7)$.
+ \end{itemize}
+ $$
+ W=\begin{bmatrix}
+    1 & 1 & 1 & - & 0 & - & - & 1 \\ 
+- & 1 & 1 & 1 & - & 0 & - & - \\
+1 & - & 1 & 1 & 1 & - & 0 & - \\ 
+1 & 1 & - & 1 & 1 & 1 & - & 0 \\ 
+0 & 1 & 1 & - & 1 & 1 & 1 & - \\ 
+1 & 0 & 1 & 1 & - & 1 & 1 & 1 \\ 
+- & 1 & 0 & 1 & 1 & - & 1 & 1 \\ 
+- & - & 1 & 0 & 1 & 1 & - & 1
+   \end{bmatrix}
+ $$
+\end{frame}
+ 
+ \begin{frame}
+  \frametitle{BGWs---Definition}
+  \begin{itemize}
+   \item $G$ a finite group.
+   \item $W=[w_{ij}]$ a $(0,G)$-matrix of order $v$ with $k$ nonzero entries in every row such that the multisets
+   $$
+   \{w_{i\ell}w_{j\ell}^{-1} : w_{i\ell} \neq 0 \neq w_{j\ell}, 0 \leqq \ell < v\}, \qquad i \neq j,
+   $$
+   contains each group element $\lambda/|G|$ times, for some $\lambda$.
+   \item $W$ is a balanced generalized weighing matrix.
+   \item Denoted as $\bgw(v,k,\lambda; G)$.
+  \end{itemize}
+ \end{frame}
+ 
+ \begin{frame}
+  \frametitle{BGWs---Classical Parameters}
+  \begin{itemize}
+   \item $q$ a prime power, $d > 1$.
+   \item Take $K = \gf(q)$, $F = \gf(q^d)$.
+   \item Relative trace $\tr_{F/K} : F \rightarrow K$ defined as
+   $$
+   \tr_{F/K}(\alpha) = \alpha + \alpha^q + \cdots + \alpha^{q^{d-1}}, \qquad \alpha \in F
+   $$
+  \end{itemize}
+ \end{frame}
+ 
+ \begin{frame}
+  \frametitle{BGWs---Classical Parameters cont.}
+  \begin{itemize}
+   \item $\alpha$ a primitive element of $F$.
+   \item $m = \frac{q^d-1}{q-1}$.
+   \item Define $\omega = \alpha^{-m}$.
+   \item Form the $m$ dimensional vector
+   $$
+   u=(\tr_{F/K}(\alpha^0), \dots, \tr_{F/K}(\alpha^{m-1})).
+   $$
+   \item Form the matrix $W$ over $K$ of order $m$ by taking $u$ together with its first $m-1$ $\omega$-shifts.
+   \item Jungnickel, Tonchev \cite{jungnickel-tonchev-perfect-codes-2} showed that $W$ is BGW with parameters
+   $$
+   \left(
+   \frac{q^d-1}{q-1}, q^{d-1}, q^{d-1}-q^{d-2}
+   \right)
+   $$
+   with respect to $K^*$.
+  \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+  \frametitle{BGWs---Example}
+  \begin{itemize}
+   \item Take $K = \gf(7)$ and $d=2$. Then $m = 8$.
+  \end{itemize}
+  \pause
+  \[
+  %\arraycolsep=1.0pt\def\arraystretch{1.0}
+\begin{array}{llllllll}
+\omega^4 & 1 & \omega^4 & \omega^3 & 0 & \omega^5 & \omega^5 & 1 \\ \pause
+\omega & \omega^4 & 1 & \omega^4 & \omega^3 & 0 & \omega^5 & \omega^5 \\ \pause
+1 & \omega & \omega^4 & 1 & \omega^4 & \omega^3 & 0 & \omega^5 \\ \pause
+1 & 1 & \omega & \omega^4 & 1 & \omega^4 & \omega^3 & 0 \\ \pause
+0 & 1 & 1 & \omega & \omega^4 & 1 & \omega^4 & \omega^3 \\ \pause
+\omega^4 & 0 & 1 & 1 & \omega & \omega^4 & 1 & \omega^4 \\ \pause
+\omega^5 & \omega^4 & 0 & 1 & 1 & \omega & \omega^4 & 1 \\ \pause
+\omega & \omega^5 & \omega^4 & 0 & 1 & 1 & \omega & \omega^4 
+\end{array}
+  \]
+  \begin{itemize}
+   \item A $\bgw(8,7,6; \gf(7)^*)$.
+  \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+  \frametitle{Codes from BGWs---Example}
+  \begin{scriptsize}
+  \[
+  \arraycolsep=1.0pt\def\arraystretch{1.0}
+   \begin{array}{llllllll|llllllll|llllllll}
+\omega^4 & 1 & \omega^4 & \omega^3 & 0 & \omega^5 & \omega^5 & 1 & \omega^5 & \omega & \omega^5 & \omega^4 & 0 & 1 & 1 & \omega & 1 & \omega^2 & 1 & \omega^5 & 0 & \omega & \omega & \omega^2 \\
+\omega & \omega^4 & 1 & \omega^4 & \omega^3 & 0 & \omega^5 & \omega^5 & \omega^2 & \omega^5 & \omega & \omega^5 & \omega^4 & 0 & 1 & 1 & \omega^3 & 1 & \omega^2 & 1 & \omega^5 & 0 & \omega & \omega \\
+1 & \omega & \omega^4 & 1 & \omega^4 & \omega^3 & 0 & \omega^5 & \omega & \omega^2 & \omega^5 & \omega & \omega^5 & \omega^4 & 0 & 1 & \omega^2 & \omega^3 & 1 & \omega^2 & 1 & \omega^5 & 0 & \omega \\
+1 & 1 & \omega & \omega^4 & 1 & \omega^4 & \omega^3 & 0 & \omega & \omega & \omega^2 & \omega^5 & \omega & \omega^5 & \omega^4 & 0 & \omega^2 & \omega^2 & \omega^3 & 1 & \omega^2 & 1 & \omega^5 & 0 \\
+0 & 1 & 1 & \omega & \omega^4 & 1 & \omega^4 & \omega^3 & 0 & \omega & \omega & \omega^2 & \omega^5 & \omega & \omega^5 & \omega^4 & 0 & \omega^2 & \omega^2 & \omega^3 & 1 & \omega^2 & 1 & \omega^5 \\
+\omega^4 & 0 & 1 & 1 & \omega & \omega^4 & 1 & \omega^4 & \omega^5 & 0 & \omega & \omega & \omega^2 & \omega^5 & \omega & \omega^5 & 1 & 0 & \omega^2 & \omega^2 & \omega^3 & 1 & \omega^2 & 1 \\
+\omega^5 & \omega^4 & 0 & 1 & 1 & \omega & \omega^4 & 1 & 1 & \omega^5 & 0 & \omega & \omega & \omega^2 & \omega^5 & \omega & \omega & 1 & 0 & \omega^2 & \omega^2 & \omega^3 & 1 & \omega^2 \\
+\omega & \omega^5 & \omega^4 & 0 & 1 & 1 & \omega & \omega^4 & \omega^2 & 1 & \omega^5 & 0 & \omega & \omega & \omega^2 & \omega^5 & \omega^3 & \omega & 1 & 0 & \omega^2 & \omega^2 & \omega^3 & 1 \\ \hline
+\omega & \omega^3 & \omega & 1 & 0 & \omega^2 & \omega^2 & \omega^3 & \omega^2 & \omega^4 & \omega^2 & \omega & 0 & \omega^3 & \omega^3 & \omega^4 & \omega^3 & \omega^5 & \omega^3 & \omega^2 & 0 & \omega^4 & \omega^4 & \omega^5 \\
+\omega^4 & \omega & \omega^3 & \omega & 1 & 0 & \omega^2 & \omega^2 & \omega^5 & \omega^2 & \omega^4 & \omega^2 & \omega & 0 & \omega^3 & \omega^3 & 1 & \omega^3 & \omega^5 & \omega^3 & \omega^2 & 0 & \omega^4 & \omega^4 \\
+\omega^3 & \omega^4 & \omega & \omega^3 & \omega & 1 & 0 & \omega^2 & \omega^4 & \omega^5 & \omega^2 & \omega^4 & \omega^2 & \omega & 0 & \omega^3 & \omega^5 & 1 & \omega^3 & \omega^5 & \omega^3 & \omega^2 & 0 & \omega^4 \\
+\omega^3 & \omega^3 & \omega^4 & \omega & \omega^3 & \omega & 1 & 0 & \omega^4 & \omega^4 & \omega^5 & \omega^2 & \omega^4 & \omega^2 & \omega & 0 & \omega^5 & \omega^5 & 1 & \omega^3 & \omega^5 & \omega^3 & \omega^2 & 0 \\
+0 & \omega^3 & \omega^3 & \omega^4 & \omega & \omega^3 & \omega & 1 & 0 & \omega^4 & \omega^4 & \omega^5 & \omega^2 & \omega^4 & \omega^2 & \omega & 0 & \omega^5 & \omega^5 & 1 & \omega^3 & \omega^5 & \omega^3 & \omega^2 \\
+\omega & 0 & \omega^3 & \omega^3 & \omega^4 & \omega & \omega^3 & \omega & \omega^2 & 0 & \omega^4 & \omega^4 & \omega^5 & \omega^2 & \omega^4 & \omega^2 & \omega^3 & 0 & \omega^5 & \omega^5 & 1 & \omega^3 & \omega^5 & \omega^3 \\
+\omega^2 & \omega & 0 & \omega^3 & \omega^3 & \omega^4 & \omega & \omega^3 & \omega^3 & \omega^2 & 0 & \omega^4 & \omega^4 & \omega^5 & \omega^2 & \omega^4 & \omega^4 & \omega^3 & 0 & \omega^5 & \omega^5 & 1 & \omega^3 & \omega^5 \\
+\omega^4 & \omega^2 & \omega & 0 & \omega^3 & \omega^3 & \omega^4 & \omega & \omega^5 & \omega^3 & \omega^2 & 0 & \omega^4 & \omega^4 & \omega^5 & \omega^2 & 1 & \omega^4 & \omega^3 & 0 & \omega^5 & \omega^5 & 1 & \omega^3 \\
+   \end{array}
+  \]
+  \end{scriptsize}
+ \end{frame}
+ 
+ \begin{frame}
+  \frametitle{Codes from BGWs---Example cont.}
+  \begin{itemize}
+   \item $n = 8, w = 7, d = 7$, and $a=7$.
+   \item Equality in (\ref{eq1}).
+   \item $\M_7(8,7,7) = 48$.
+  \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+  \frametitle{Main Result}
+  \begin{block}{Theorem}
+   If $q$ is a prime power, and if $d > 1$, then
+   $$
+   \M_q\left(\frac{q^d-1}{q-1},q^{d-1}, q^{d-1}\right) = q^d-1.
+   $$
+   Moreover, the code can be assumed to be completely generated by a single codeword and equidistant.
+  \end{block}
+  \begin{itemize}
+   \item If $q$ odd, taking $d=2$ implies (\ref{eq2}) as a corollary.
+  \end{itemize}
+ \end{frame}
+ 
+ \begin{frame}
+  \centering\huge Thank You!!!
+ \end{frame}
+ 
+ \begin{frame}{References}
+  \bibliographystyle{plain}
+  \bibliography{./mybib.bib}
+ \end{frame}
+\end{document}
