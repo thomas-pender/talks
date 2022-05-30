@@ -1,5 +1,6 @@
 \documentclass{beamer}
-\usetheme{Madrid}
+% \usetheme{Madrid}
+\usetheme{AnnArbor}
 
 \usepackage[utf8]{inputenc}
 \usepackage{mathrsfs}
@@ -7,6 +8,7 @@
 \usepackage{amsmath}
 \usepackage{xcolor}
 \usepackage{natbib}
+\usepackage{tikz}
 
 \newcommand{\rred}[1]{\textcolor{red}{#1}}
 \newcommand{\ggreen}[1]{\textcolor{green}{#1}}
@@ -14,20 +16,29 @@
 
 \title[Splittable ODs]{Balancedly Splittable Orthogonal Designs}
 % \subtitle{}
-\author[T. Pender]{Thomas Pender}
+\author[T. Pender]{Thomas Pender\\\scriptsize $^{***}$Joint work with Hadi Kharaghani, Sho Suda}
 \institute[U of L]{Department of Mathematics and Computer Science\\University of
 Lethbridge}
 \date[BIRS June 2022]{Alberta--Montana Combinatorics \& Algorithms Days at BIRS\\June 2022}
+
+\titlegraphic{
+  \includegraphics[scale=0.75]{shield.jpg}
+}
+
+\usebackgroundtemplate{%
+  \tikz\node[opacity=0.1] {\includegraphics[height=0.75\paperheight,width=0.75\paperwidth,angle=-22.5]{shield2}};}
 
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+{
+  \setbeamertemplate{background canvas}{}
 \begin{frame}
-
   \titlepage
-  \centering{\scriptsize $^{***}$Joint work with Hadi Kharaghani, Sho Suda}
+  % \centering{\scriptsize $^{***}$Joint work with Hadi Kharaghani, Sho Suda}
 \end{frame}
+}
 
 \begin{frame}{Summary}
 
