@@ -1,5 +1,4 @@
 \documentclass{beamer}
-% \usetheme{Madrid}
 \usetheme{AnnArbor}
 
 \usepackage[utf8]{inputenc}
@@ -51,11 +50,13 @@ Lethbridge}
   
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Hadamard Matrices}
+\section{Hadamard Matrices}
 
-  \begin{block}{Definition: Hadmard Matrix}
+\begin{frame}
+
+  \begin{block}{{\bf Definition:} Hadmard Matrix}
     \begin{itemize}
       \item A square matrix with entries from $\{-1,1\}$ with pairwise
         orthogonal rows.
@@ -66,7 +67,7 @@ Lethbridge}
 
 \end{frame}
 
-\begin{frame}{Hadamard Matrices}
+\begin{frame}
 
   \[
     \arraycolsep=1.0pt\def\arraystretch{0.75}
@@ -96,9 +97,9 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Hadamard Matrices}
+\begin{frame}
 
-  \begin{block}{Definition: Hadmard Matrix}
+  \begin{block}{{\bf Definition:} Hadmard Matrix}
     \begin{itemize}
     \item A square matrix with entries from $\{-1,1\}$ with pairwise
       orthogonal rows.
@@ -109,7 +110,7 @@ Lethbridge}
 
   \pause
 
-  \begin{block}{Definition: Balancedly Splittable \cite[][]{splittable-hadamard}}
+  \begin{block}{{\bf Definition:} Balancedly Splittable \cite[][]{splittable-hadamard}}
     \begin{itemize}
     \item A Hadamard matrix $H$ of order $n$ with $n \times \ell$ submatrix $H_1$ .
       \item $H$ is $(n,\ell,a,b)$ balancedly splittable, $a<b$, if $$H_1H_1^t =
@@ -120,7 +121,7 @@ Lethbridge}
 
 \end{frame}
 
-\begin{frame}{Hadamard Matrices}
+\begin{frame}
 
   \[
     \arraycolsep=1.0pt\def\arraystretch{0.75}
@@ -150,7 +151,7 @@ Lethbridge}
 
 \end{frame}
 
-\begin{frame}{Hadmard Matrices}
+\begin{frame}
 
   \[
     \arraycolsep=1.0pt\def\arraystretch{0.75}
@@ -180,7 +181,7 @@ Lethbridge}
 
 \end{frame}
 
-\begin{frame}{Hadamard Matrices}
+\begin{frame}
 
   \[
     \arraycolsep=1.0pt\def\arraystretch{0.75}
@@ -219,7 +220,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Hadamard Matrices}
+\begin{frame}
 
   \[
     \arraycolsep=2.0pt\def\arraystretch{0.75}
@@ -251,7 +252,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Hadamard Matrices}
+\begin{frame}
 
   \[
     \arraycolsep=1.0pt\def\arraystretch{0.75}
@@ -281,11 +282,13 @@ Lethbridge}
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Orthogonal Designs}
+\section{Orthogonal Designs}
 
-  \begin{block}{Definition: Orthogonal Designs}
+\begin{frame}
+
+  \begin{block}{{\bf Definition:} Orthogonal Designs}
     \begin{itemize}
     \item A square $\{\pm z_1, \dots, \pm z_u\}$-matriz $X$ of order $n$ such
       that
@@ -299,7 +302,7 @@ Lethbridge}
 
 \end{frame}
 
-\begin{frame}{Orthogonal Designs}
+\begin{frame}
 
   \[
     \arraycolsep=2.0pt\def\arraystretch{0.75}
@@ -331,7 +334,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Orthogonal Designs}
+\begin{frame}
 
   \[
     \arraycolsep=2.0pt\def\arraystretch{0.75}
@@ -359,7 +362,7 @@ Lethbridge}
 
 \end{frame}
 
-\begin{frame}{Orthogonal Designs}
+\begin{frame}
 
   \[
       (a^2+b^2)
@@ -388,7 +391,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Orthogonal Designs}
+\begin{frame}
 
   \[
     \arraycolsep=2.0pt\def\arraystretch{0.75}
@@ -420,9 +423,9 @@ Lethbridge}
 
 \end{frame}
 
-\begin{frame}{Orthogonal Designs}
+\begin{frame}
 
-  \begin{block}{Definition: Orthogonal Designs}
+  \begin{block}{{\bf Definition:} Orthogonal Designs}
     \begin{itemize}
     \item A square $\{\pm z_1, \dots, \pm z_u\}$-matrix $X$ of order $n$ such
       that
@@ -435,14 +438,13 @@ Lethbridge}
 
   \pause
 
-  \begin{block}{Definition: Balancedly Splittable \cite[][]{split-od}} 
+  \begin{block}{{\bf Definition:} Balancedly Splittable \cite[][]{split-od}} 
     \begin{itemize}
     \item An OD $X$ with $n \times \ell$ submatrix $X_1$ admits a stable
       $(n,\ell,a,b)$ split if
         $$
-        X_1X_1^t = \sigma(cI_n + aA + b(J_n-I_n-A)),
+        X_1X_1^t = \sigma(cI_n + aA + b(J_n-I_n-A)).
         $$
-        where $c \mid \ell$.
       \item The split is unstable if it is not stable and
         $$
         X_1X_1^t = \ell I_n + aA + b(J_n-I_n-A)
@@ -453,11 +455,13 @@ Lethbridge}
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Auxiliary Matrices}
+\section{Construction}
 
-  \begin{block}{Definition: Auxiliary Matrices}
+\begin{frame}
+
+  \begin{block}{{\bf Definition:} Auxiliary Matrices}
     \begin{itemize}
       \item $X$ a full $OD(n;s_1, \dots, s_u)$ and $H$ the Hadamard matrix
         obtained by replacing each variable with $1$.
@@ -472,9 +476,7 @@ Lethbridge}
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-\begin{frame}{Construction}
+\begin{frame}
 
   \begin{itemize}
     \item An $OD(2;1,1)$:
@@ -503,7 +505,7 @@ Lethbridge}
  
 \end{frame}
 
-\begin{frame}{Construction}
+\begin{frame}
 
   \begin{itemize}
     \item Form the sequences
@@ -514,7 +516,7 @@ Lethbridge}
   $$
 
   \begin{itemize}
-    \item The sum of the periodic correlations of $\alpha$ and $\beta$ satisfy
+    \item The sum of the periodic autocorrelations of $\alpha$ and $\beta$ satisfy
   \end{itemize}
 
   $$
@@ -531,7 +533,7 @@ Lethbridge}
 
 \end{frame}
 
-\begin{frame}{Construction}
+\begin{frame}
 
   \begin{itemize}
   \item Form the matrices
@@ -553,7 +555,7 @@ Lethbridge}
 
 \end{frame}
 
-\begin{frame}{Construction}
+\begin{frame}
 
   \[
     \Theta = 
@@ -578,7 +580,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Construction}
+\begin{frame}
 
   \[
     \Theta\Theta^t =
@@ -589,7 +591,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Construction}
+\begin{frame}
 
   \[
     \Theta\Theta^t = (a^2+b^2)
@@ -613,7 +615,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Construction}
+\begin{frame}
   
   \[
     \arraycolsep=2.0pt\def\arraystretch{0.75}
@@ -641,7 +643,7 @@ Lethbridge}
 
 \end{frame}
 
-\begin{frame}{Construction}
+\begin{frame}
 
   \begin{itemize}
     \item Define:
@@ -658,7 +660,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Construction}
+\begin{frame}
 
   \[
     \begin{array}{cc}
@@ -684,7 +686,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Construction}
+\begin{frame}
 
   \[
     \left(
@@ -735,7 +737,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Construction}
+\begin{frame}
 
   \[
     \arraycolsep=2.0pt\def\arraystretch{0.75}
@@ -763,37 +765,39 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Construction}
+% \begin{frame}
 
-  \[
-    \arraycolsep=2.0pt\def\arraystretch{0.75}
-    \left(
-      \begin{array}{cccccccccccccccc}
-        a&b&a&b&a&b&a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&\bar{a}&\bar{b}\\
-        a&b&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&\bar{b}&a&b\\
-        a&b&a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&\bar{a}&\bar{b}&a&b&a&b\\
-        a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&a&b&a&b&a&b&\bar{a}&\bar{b}\\
-        b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a\\
-        b&\bar{a}&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}\\
-        a&b&\bar{a}&\bar{b}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}\\
-        a&b&\bar{a}&\bar{b}&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a\\
-        b&\bar{a}&\bar{b}&a&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a&a&b\\
-        b&\bar{a}&\bar{b}&a&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b\\
-        \bar{b}&a&\bar{b}&a&a&b&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}\\
-        \bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a\\
-        \bar{a}&\bar{b}&a&b&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}\\
-        \bar{a}&\bar{b}&a&b&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a\\
-        \bar{b}&a&b&\bar{a}&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}&a&b\\
-        \bar{b}&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b\\
-      \end{array}
-    \right)
-  \]
+%   \[
+%     \arraycolsep=2.0pt\def\arraystretch{0.75}
+%     \left(
+%       \begin{array}{cccccccccccccccc}
+%         a&b&a&b&a&b&a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&\bar{a}&\bar{b}\\
+%         a&b&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&\bar{b}&a&b\\
+%         a&b&a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&\bar{a}&\bar{b}&a&b&a&b\\
+%         a&b&a&b&\bar{a}&\bar{b}&\bar{a}&\bar{b}&a&b&a&b&a&b&\bar{a}&\bar{b}\\
+%         b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a\\
+%         b&\bar{a}&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}\\
+%         a&b&\bar{a}&\bar{b}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}\\
+%         a&b&\bar{a}&\bar{b}&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a\\
+%         b&\bar{a}&\bar{b}&a&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}&\bar{b}&a&a&b\\
+%         b&\bar{a}&\bar{b}&a&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b\\
+%         \bar{b}&a&\bar{b}&a&a&b&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}\\
+%         \bar{b}&a&\bar{b}&a&a&b&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a\\
+%         \bar{a}&\bar{b}&a&b&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}&a&b&b&\bar{a}\\
+%         \bar{a}&\bar{b}&a&b&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b&\bar{b}&a\\
+%         \bar{b}&a&b&\bar{a}&b&\bar{a}&\bar{b}&a&a&b&b&\bar{a}&b&\bar{a}&a&b\\
+%         \bar{b}&a&b&\bar{a}&\bar{b}&a&b&\bar{a}&a&b&\bar{b}&a&\bar{b}&a&a&b\\
+%       \end{array}
+%     \right)
+%   \]
   
-\end{frame}
+% \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Complex and Quaternion Elements}
+\section{Complex and Quaternion Elements}
+
+\begin{frame}
   \begin{itemize}
     \item The following is a $OD(2;1,1)$ of quaternions.
   \end{itemize}
@@ -810,7 +814,7 @@ Lethbridge}
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Complex and Quaternion Elements}
+\begin{frame}
 
   \[
     \arraycolsep=2.0pt\def\arraystretch{0.75}
@@ -838,17 +842,19 @@ Lethbridge}
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+\section{Equiangular Lines and Unbiased Hadamard Matrices}
 
-  \begin{block}{Definition: Equiangular Lines}
+\begin{frame}
+
+  \begin{block}{{\bf Definition:} Equiangular Lines}
     A collection $\mathcal{L} \subset \mathbb{R}^\ell$ of lines (vectors) are
     equiangular if there is a constant $a$ such that $|\langle u,v \rangle| = a$ for
     every $u,v \in L$.
   \end{block}
 
-  \begin{block}{Definition: Unbiased Hadamard Matrices}
+  \begin{block}{{\bf Definition:} Unbiased Hadamard Matrices}
     Hadamard matrices $H$ and $K$ are unbiased if
     \[
       HK^t = \sqrt{n}L
@@ -858,7 +864,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+\begin{frame}
 
   \[
     H=
@@ -889,7 +895,7 @@ Lethbridge}
 
 \end{frame}
 
-\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+\begin{frame}
 
    \[
      H=
@@ -920,7 +926,7 @@ Lethbridge}
  
 \end{frame}
 
-\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+\begin{frame}
 
   \[
     \arraycolsep=1.0pt\def\arraystretch{0.75}
@@ -953,7 +959,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+\begin{frame}
 
   \[
     K=
@@ -986,9 +992,9 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+\begin{frame}
 
-  \begin{block}{Proposition \cite[][]{splittable-hadamard}}
+  \begin{block}{{\bf Proposition} \cite[][]{splittable-hadamard}}
     $H = \left( \begin{smallmatrix} H_1 & H_2 \end{smallmatrix} \right)$ a
     Hadamard matrix of order $n$ with
     \[
@@ -1004,7 +1010,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+\begin{frame}
 
   \[
     \begin{pmatrix}
@@ -1016,7 +1022,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+\begin{frame}
 
   \[
     \begin{pmatrix}
@@ -1028,7 +1034,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+\begin{frame}
 
   \[
     \begin{pmatrix}
@@ -1040,7 +1046,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Equiangular Lines and Unbiased Hadamard Matrices}
+\begin{frame}
 
   \[
     \begin{pmatrix}
@@ -1052,7 +1058,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Equiangular Lines and Hadamard Matrices}
+\begin{frame}
 
   \begin{itemize}
   \item each split gives equiangular lines
@@ -1062,11 +1068,13 @@ Lethbridge}
   
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Unbiased ODs}
+\section{Unbiased ODs}
 
-  \begin{block}{Definition: Unbiased ODs \cite[][]{unbiased-od}}
+\begin{frame}
+
+  \begin{block}{{\bf Definition:} Unbiased ODs \cite[][]{unbiased-od}}
     \begin{itemize}
     \item $X_1$ and $X_2$ be two $OD(n,s_1, \dots,s_u)$ in $\{\pm z_1, \dots,
       \pm z_u\}$.
@@ -1094,7 +1102,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Unbiased ODs}
+\begin{frame}
 
   \begin{itemize}
     \item Recall:
@@ -1118,7 +1126,7 @@ Lethbridge}
   
 \end{frame}
 
-\begin{frame}{Unbiased ODs}
+\begin{frame}
 
   \begin{tiny}
   \[
@@ -1169,7 +1177,7 @@ Lethbridge}
 
 \end{frame}
 
-\begin{frame}{Unbiased ODs}
+\begin{frame}
   
   \[
     2(a^2+b^2)
@@ -1198,7 +1206,7 @@ Lethbridge}
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 

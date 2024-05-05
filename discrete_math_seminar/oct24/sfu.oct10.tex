@@ -1,0 +1,1720 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+\usecolortheme{beaver}
+
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{longtable,tabu}
+\usepackage{blkarray}
+
+\mathchardef\mymin="2D
+
+\newcommand{\bibd}[1]{2 \mymin #1 \mymin design}
+\newcommand{\ds}[1]{#1 \mymin DS}
+\newcommand{\rds}[1]{#1 \mymin RDS}
+\newcommand{\RR}[1]{\textcolor{red}{#1}}
+\newcommand{\BB}[1]{\textcolor{blue}{#1}}
+\newcommand{\MM}[1]{\textcolor{magenta}{#1}}
+\newcommand{\abs}[1]{|#1|}
+\newcommand{\sharps}[1]{\langle #1 \rangle}
+\newcommand{\Z}{\mathbb{Z}}
+
+\title[Balanced Weighing Matrices]{Balanced Weighing Matrices}
+ \subtitle{Generalizations and Related Configurations}
+ \author[T. Pender]{Thomas Pender\\\scriptsize $^{***}$Joint work with Hadi Kharaghani, Sho Suda}
+\institute[SFU]{Department of Mathematics\\Simon Fraser University}
+\date[10/10/2023]{Oct 24, 2023}
+
+\titlegraphic{
+  \includegraphics[scale=0.07]{sfu_shield.jpg}
+}
+
+\usebackgroundtemplate{%
+  \tikz\node[opacity=0.1] {\includegraphics[height=0.75\paperheight,width=0.90\paperwidth,angle=-22.5]{sfu.png}};}
+
+\begin{document}
+
+{
+\setbeamertemplate{background canvas}{}
+\begin{frame}
+  \titlepage
+  % \centering{\scriptsize $^{***}$Joint work with Hadi Kharaghani, Sho Suda}
+\end{frame}
+}
+
+\begin{frame}{Summary}
+  \tableofcontents[hideallsubsections,sections={1-5}]
+\end{frame}
+% \setbeamertemplate{sidebar left}[sidebar theme]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% section -- preliminaries
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Preliminaries}
+
+\begin{frame}
+  \[
+    \text{\huge\bf Preliminaries}
+  \]
+\end{frame}
+
+\begin{frame}{Section Summary}
+  \tableofcontents[sections={1}]
+\end{frame}
+
+% % subsection %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Weighing Matrices}
+
+\begin{frame}
+
+  \begin{block}{{\bf Definition.} Weighing Matrix}
+    A $v \times v$ $(-1,0,1)$-matrix $W$ such that
+    \[
+      WW^t = kI_v.
+    \]
+    Write $W(v,k)$.
+  \end{block}
+
+  \begin{itemize}
+  \item $W(v,v)$ is a {\it Hadamard matrix}
+  \item $W(v,v-1)$ is a {\it conference matrix}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item A $W(19,9)$:
+    \[
+      W=
+      \arraycolsep=1.25pt\def\arraystretch{0.625}
+      \left(
+        \begin{array}{ccccccccccccccccccc}
+          0&+&+&+&+&+&+&+&+&+&0&0&0&0&0&0&0&0&0\\
+          0&0&-&-&0&+&0&0&0&+&-&+&+&0&+&0&0&0&+\\
+          0&-&0&-&0&0&+&+&0&0&+&-&+&0&0&+&+&0&0\\
+          0&-&-&0&+&0&0&0&+&0&+&+&-&+&0&0&0&+&0\\
+          0&0&0&+&0&-&-&0&+&0&0&0&+&-&+&+&0&+&0\\
+          0&+&0&0&-&0&-&0&0&+&+&0&0&+&-&+&0&0&+\\
+          0&0&+&0&-&-&0&+&0&0&0&+&0&+&+&-&+&0&0\\
+          0&0&+&0&0&0&+&0&-&-&0&+&0&0&0&+&-&+&+\\
+          0&0&0&+&+&0&0&-&0&-&0&0&+&+&0&0&+&-&+\\
+          0&+&0&0&0&+&0&-&-&0&+&0&0&0&+&0&+&+&-\\
+          +&0&0&0&+&0&-&+&-&0&0&-&-&0&+&0&0&0&+\\
+          +&0&0&0&-&+&0&0&+&-&-&0&-&0&0&+&+&0&0\\
+          +&0&0&0&0&-&+&-&0&+&-&-&0&+&0&0&0&+&0\\
+          +&+&-&0&0&0&0&+&0&-&0&0&+&0&-&-&0&+&0\\
+          +&0&+&-&0&0&0&-&+&0&+&0&0&-&0&-&0&0&+\\
+          +&-&0&+&0&0&0&0&-&+&0&+&0&-&-&0&+&0&0\\
+          +&+&0&-&+&-&0&0&0&0&0&+&0&0&0&+&0&-&-\\
+          +&-&+&0&0&+&-&0&0&0&0&0&+&+&0&0&-&0&-\\
+          +&0&-&+&-&0&+&0&0&0&+&0&0&0&+&0&-&-&0\\
+        \end{array}
+      \right)
+    \]
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Verify $W$ is a weighing matrix:
+    \[
+      WW^t=
+      \arraycolsep=1.25pt\def\arraystretch{0.625}
+      \left(
+        \begin{array}{ccccccccccccccccccc}
+          \mathbf{9}&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+          0&\mathbf{9}&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+          0&0&\mathbf{9}&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+          0&0&0&\mathbf{9}&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+          0&0&0&0&\mathbf{9}&0&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+          0&0&0&0&0&\mathbf{9}&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+          0&0&0&0&0&0&\mathbf{9}&0&0&0&0&0&0&0&0&0&0&0&0\\
+          0&0&0&0&0&0&0&\mathbf{9}&0&0&0&0&0&0&0&0&0&0&0\\
+          0&0&0&0&0&0&0&0&\mathbf{9}&0&0&0&0&0&0&0&0&0&0\\
+          0&0&0&0&0&0&0&0&0&\mathbf{9}&0&0&0&0&0&0&0&0&0\\
+          0&0&0&0&0&0&0&0&0&0&\mathbf{9}&0&0&0&0&0&0&0&0\\
+          0&0&0&0&0&0&0&0&0&0&0&\mathbf{9}&0&0&0&0&0&0&0\\
+          0&0&0&0&0&0&0&0&0&0&0&0&\mathbf{9}&0&0&0&0&0&0\\
+          0&0&0&0&0&0&0&0&0&0&0&0&0&\mathbf{9}&0&0&0&0&0\\
+          0&0&0&0&0&0&0&0&0&0&0&0&0&0&\mathbf{9}&0&0&0&0\\
+          0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&\mathbf{9}&0&0&0\\
+          0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&\mathbf{9}&0&0\\
+          0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&\mathbf{9}&0\\
+          0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0&\mathbf{9}\\
+        \end{array}
+      \right)
+    \]
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item A Hadamard matrix $W(16,16)$:
+    \[
+      \arraycolsep=1.0pt\def\arraystretch{0.5}
+      \left(
+        \begin{array}{cccccccccccccccc}
+          +&+&+&+&+&+&+&+&+&+&+&+&+&+&+&+\\
+          +&-&+&-&+&-&+&-&+&-&+&-&+&-&+&-\\
+          +&+&-&-&+&+&-&-&+&+&-&-&+&+&-&-\\
+          +&-&-&+&+&-&-&+&+&-&-&+&+&-&-&+\\
+          +&+&+&+&-&-&-&-&+&+&+&+&-&-&-&-\\
+          +&-&+&-&-&+&-&+&+&-&+&-&-&+&-&+\\
+          +&+&-&-&-&-&+&+&+&+&-&-&-&-&+&+\\
+          +&-&-&+&-&+&+&-&+&-&-&+&-&+&+&-\\
+          +&+&+&+&+&+&+&+&-&-&-&-&-&-&-&-\\
+          +&-&+&-&+&-&+&-&-&+&-&+&-&+&-&+\\
+          +&+&-&-&+&+&-&-&-&-&+&+&-&-&+&+\\
+          +&-&-&+&+&-&-&+&-&+&+&-&-&+&+&-\\
+          +&+&+&+&-&-&-&-&-&-&-&-&+&+&+&+\\
+          +&-&+&-&-&+&-&+&-&+&-&+&+&-&+&-\\
+          +&+&-&-&-&-&+&+&-&-&+&+&+&+&-&-\\
+          +&-&-&+&-&+&+&-&-&+&+&-&+&-&-&+\\
+        \end{array}
+      \right)     
+    \]
+    \item A $W(2^n,2^n)$ as the character table for elementary abelian 2-group.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{block}{{\bf Theorem.} Necessary conditions for existence}
+    If a $W(v,k)$ exists, then
+    \begin{itemize}
+    \item $v$ odd implies $k$ a perfect square and $(v-k)^2-(v-k) \geq v-1$,
+    \item $v \equiv 2 \pmod{4}$ implies $k$ a sum of two squares, and
+    \item $v=k$ implies $v = 1$, 2, or $v \equiv 0 \pmod{4}$.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{{\bf Theorem.} Necessary conditions not necessarily sufficient}
+    There does not exist a $W(2v+1,v)$ for any $v>2$.
+  \end{block}
+
+  \begin{exampleblock}{{\bf Conjecture.} Existence of Hadamard matrices}
+    A $W(4v,4v)$ exists for every $v>1$.
+  \end{exampleblock}
+  
+\end{frame}
+
+% subsection %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Balanced Incomplete Block Designs}
+
+\begin{frame}
+
+  \begin{block}{{\bf Definition:} Balanced Incomplete Block Design}
+    \begin{itemize}
+    \item A binary $v \times b$ $(0,1)$-matrix $A$ such that:
+      \begin{enumerate}
+      \item $AA^t = rI_v + \lambda(J_v-I_v)$, and
+      \item $J_vA = kJ_v$.
+      \end{enumerate}
+      Write $\bibd{(v,k,\lambda)}$.
+    \item The design is symmetric if $v=b$ (equiv. $k=r$).
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item A symmetric $\bibd{(7,4,2)}$:
+    \[
+      A=
+      \left(
+      \begin{array}{ccccccc}
+        1&0&0&1&0&1&1\\
+        1&1&0&0&1&0&1\\
+        1&1&1&0&0&1&0\\
+        0&1&1&1&0&0&1\\
+        1&0&1&1&1&0&0\\
+        0&1&0&1&1&1&0\\
+        0&0&1&0&1&1&1\\
+      \end{array}
+      \right)
+    \]
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+  \item Verify $A$ is a symmetric design:
+    \[
+      AA^t =
+      \left(
+        \begin{array}{ccccccc}
+          4&2&2&2&2&2&2\\
+          2&4&2&2&2&2&2\\
+          2&2&4&2&2&2&2\\
+          2&2&2&4&2&2&2\\
+          2&2&2&2&4&2&2\\
+          2&2&2&2&2&4&2\\
+          2&2&2&2&2&2&4\\
+        \end{array}
+      \right)
+    \]
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+
+  \begin{block}{{\bf Theorem.} Necessary conditions for existence}
+    A symmetric $\bibd{(v,k,\lambda)}$ exists only if
+    \begin{itemize}
+    \item $k-\lambda$ a perfect square whenever $v$ is even, and
+    \item the equation
+      \[
+        x^2=(k-\lambda)y^2+(-1)^{(v-1)/2}\lambda z^2
+      \]
+      has nontrivial integer solutions whenever $v$ is odd.
+    \end{itemize}
+  \end{block}
+
+  \begin{exampleblock}{{\bf Example.} Necessary conditions not sufficient}
+    A projective plane of order 10 (particular parameter family of symmetric
+    BIBDs) is not ruled out by the Theorem (take $(x,y,z)=(3,1,1)$). It is known
+    not to exist, however. 
+  \end{exampleblock}
+
+\end{frame}
+
+% \begin{frame}
+
+%   \begin{center}
+%     {\Large Motivations/Applications}
+%   \end{center}
+%   \begin{itemize}
+%   \item Weighing matrices to weighing designs, error-correcting codes.
+%   \item Hadamard matrices to error-correcting codes (Ex. 1979 Mariner 9
+%     mission; see MacWilliams \& Sloane, 1977), fast transforms and signal
+%     processing and optics (Walsh transform), etc (Harwit \& Sloane, 1979).
+%   \item BIBDs to cost reduction of experiments at the same time as affording
+%     efficacious correlation analyses of variance, etc.
+%   \end{itemize}
+
+% \end{frame}
+
+% subsection %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Balanced Weighing Matrices and Classical Constructions}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item The matrix is circulant:
+    \[
+      A=
+      \left(
+        \begin{array}{ccccccc}
+          1&0&0&1&0&1&1\\
+          1&1&0&0&1&0&1\\
+          1&1&1&0&0&1&0\\
+          0&1&1&1&0&0&1\\
+          1&0&1&1&1&0&0\\
+          0&1&0&1&1&1&0\\
+          0&0&1&0&1&1&1\\
+        \end{array}
+      \right)
+    \]
+  \item Cyclic group of automorphisms acting regularly on points and blocks of
+    corresponding incidence structure.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Index rows/columns by $H=\langle a : a^7=1 \rangle$:
+    \[
+      A=
+      \begin{blockarray}{cccccccc}
+        & 1 & a & a^2 & a^3 & a^4 & a^5 & a^6 \\
+        \begin{block}{c(ccccccc)}
+          1   &1&0&0&1&0&1&1\\
+          a   &1&1&0&0&1&0&1\\
+          a^2 &1&1&1&0&0&1&0\\
+          a^3 &0&1&1&1&0&0&1\\
+          a^4 &1&0&1&1&1&0&0\\
+          a^5 &0&1&0&1&1&1&0\\
+          a^6 &0&0&1&0&1&1&1\\
+        \end{block}
+      \end{blockarray}
+    \]
+  \item Take $A_{a^i,a^j}=A_{a^{i-j},1}$.
+  \item 1st column is a characteristic vector for $D=\{1,a,a^2,a^4\} \subset H$.
+  \item $i$th column is a characteristic vector of $D \cdot a^i$.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{block}{{\bf Definition.} Difference Sets}
+    A difference set $\ds{(v,k,\lambda)}$ is a $k$-subset $D \subseteq G$ of finite
+    group $G$ of order $v$ such that every nonidentity element of $G$ appears
+    $\lambda$ times in the multiset $\{dd^{-1} : d \in D\}$ of differences
+    (quotients) of elements of $D$.
+  \end{block}
+
+  \begin{block}{{\bf Theorem.} Difference sets and symmetric BIBDs}
+    A symmetric $\bibd{(v,k,\lambda)}$ admits a regular group $G$ of automorphisms
+    if and only if the blocks of the design can be identified with the
+    development (translates) of a $\ds{(v,k,\lambda)}$ difference set in $G$.
+  \end{block}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Consider the quotients amongst $D=\{1,a,a^2,a^4\} \subset H$:
+    \[
+      \arraycolsep=10.0pt\def\arraystretch{2.0}
+      \begin{array}{c|cccc}
+        \text{ } & 1 & a & a^2 & a^4 \\ \hline
+        1 & 1 & a^6 & a^5 & a^3 \\
+        a & a & 1 & a^6 & a^4 \\
+        a^2 & a^2 & a & 1 & a^5 \\
+        a^4 & a^4 & a^3 & a^2 & 1
+      \end{array}
+    \]
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Consider the quotients amongst $D=\{1,a,a^2,a^4\} \subset H$:
+    \[
+      \arraycolsep=10.0pt\def\arraystretch{2.0}
+      \begin{array}{c|cccc}
+        \text{ } & 1 & a & a^2 & a^4 \\ \hline
+        1 & 1 & a^6 & a^5 & a^3 \\
+        a & \RR{ a } & 1 & a^6 & a^4 \\
+        a^2 & a^2 & \RR{ a } & 1 & a^5 \\
+        a^4 & a^4 & a^3 & a^2 & 1
+      \end{array}
+    \]
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Consider the quotients amongst $D=\{1,a,a^2,a^4\} \subset H$:
+    \[
+      \arraycolsep=10.0pt\def\arraystretch{2.0}
+      \begin{array}{c|cccc}
+        \text{ } & 1 & a & a^2 & a^4 \\ \hline
+        1 & 1 & a^6 & a^5 & a^3 \\
+        a & a & 1 & a^6 & a^4 \\
+        a^2 & \RR{ a^2 } & a & 1 & a^5 \\
+        a^4 & a^4 & a^3 & \RR{ a^2 } & 1
+      \end{array}
+    \]
+  \end{itemize}
+
+\end{frame}
+
+% \begin{frame}
+
+%   \begin{itemize}
+%   \item The incidence matrix $A$ is the complement of a projective geometry of
+%     order 2.
+%   \item That the incidence structure admited by a projective geometry admits a
+%     regular group of automorphisms is due to Singer (1938).
+%   \end{itemize}
+
+% \end{frame}
+
+\begin{frame}
+
+  \begin{block}{{\bf Definition.} Balanced Weighing Matrices}
+    \begin{itemize}
+    \item If $W$ is a $W(v,k)$, then $W$ is balanced if $\abs{W}$ is the incidence
+    matrix of a symmetric $\bibd{(v,k,\lambda)}$, $\lambda=k(k-1)/(v-1)$.
+    \item Write $BW(v,k)$.
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Our example $W(19,9)$ is a $BW(19,9)$:
+    \[
+      W=
+      \arraycolsep=1.25pt\def\arraystretch{0.625}
+      \left(
+        \begin{array}{ccccccccccccccccccc}
+          0&+&+&+&+&+&+&+&+&+&0&0&0&0&0&0&0&0&0\\
+          0&0&-&-&0&+&0&0&0&+&-&+&+&0&+&0&0&0&+\\
+          0&-&0&-&0&0&+&+&0&0&+&-&+&0&0&+&+&0&0\\
+          0&-&-&0&+&0&0&0&+&0&+&+&-&+&0&0&0&+&0\\
+          0&0&0&+&0&-&-&0&+&0&0&0&+&-&+&+&0&+&0\\
+          0&+&0&0&-&0&-&0&0&+&+&0&0&+&-&+&0&0&+\\
+          0&0&+&0&-&-&0&+&0&0&0&+&0&+&+&-&+&0&0\\
+          0&0&+&0&0&0&+&0&-&-&0&+&0&0&0&+&-&+&+\\
+          0&0&0&+&+&0&0&-&0&-&0&0&+&+&0&0&+&-&+\\
+          0&+&0&0&0&+&0&-&-&0&+&0&0&0&+&0&+&+&-\\
+          +&0&0&0&+&0&-&+&-&0&0&-&-&0&+&0&0&0&+\\
+          +&0&0&0&-&+&0&0&+&-&-&0&-&0&0&+&+&0&0\\
+          +&0&0&0&0&-&+&-&0&+&-&-&0&+&0&0&0&+&0\\
+          +&+&-&0&0&0&0&+&0&-&0&0&+&0&-&-&0&+&0\\
+          +&0&+&-&0&0&0&-&+&0&+&0&0&-&0&-&0&0&+\\
+          +&-&0&+&0&0&0&0&-&+&0&+&0&-&-&0&+&0&0\\
+          +&+&0&-&+&-&0&0&0&0&0&+&0&0&0&+&0&-&-\\
+          +&-&+&0&0&+&-&0&0&0&0&0&+&+&0&0&-&0&-\\
+          +&0&-&+&-&0&+&0&0&0&+&0&0&0&+&0&-&-&0\\
+        \end{array}
+      \right)
+    \]
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item A $BW(7,4)$:
+    \[
+      B=
+      \left(
+        \begin{array}{ccccccc}
+          -&0&0&+&0&+&+\\
+          +&-&0&0&+&0&+\\
+          +&+&-&0&0&+&0\\
+          0&+&+&-&0&0&+\\
+          +&0&+&+&-&0&0\\
+          0&+&0&+&+&-&0\\
+          0&0&+&0&+&+&-\\
+        \end{array}
+      \right)
+    \]
+  \item The absolute value matrix is $A$.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item The $BW(7,4)$ $B$ is constructed from a relative difference set.
+  \item The $BW(19,9)$ $W$ is not constructable from an RDS. Computationally
+    found by Gibbons and Mathon (1987).
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{block}{{\bf Definition.} Relative Difference Sets}
+    A relative difference set $\rds{(m,n,k,\lambda)}$ of a group $G$ of order
+    $mn$ relative to a subgroup $N$ of order $n$ is a $k$-subset $R \subseteq G$
+    such that every nonidentity element of $G \backslash N$ appears $\lambda$
+    times in the multiset $\{rr^{-1} : r \in R\}$ of differences (quotients) of
+    elements of $R$.
+  \end{block}
+
+  \begin{itemize}
+  \item An RDS in a group $G$ corresponds to a point regular automorphism group
+    of a square divisible design isomorphic to $G$.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Let $G=\langle a,b : a^7=b^2=1 \rangle \cong C_{14}$.
+  \item $R=\{b,a,a^2,a^4\}$ is an $\rds{(8,2,4,1)}$ is $G$ relative to $N=\{1,b\}$.
+    \[
+      \arraycolsep=10.0pt\def\arraystretch{2.0}
+      \begin{array}{c|cccc}
+        \text{ } & b & a & a^2 & a^4 \\ \hline
+        b & 1 & ba^6 & ba^5 & ba^3 \\
+        a & ab & 1 & a^6 & a^4 \\
+        a^2 & a^2b & a & 1 & a^5 \\
+        a^4 & a^4b & a^3 & a^2 & 1
+      \end{array}
+    \]
+  \item $b$ does not appear!
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Let $G=\langle a,b : a^7=b^2=1 \rangle \cong C_{14}$.
+  \item $R=\{b,a,a^2,a^4\}$ is an $\rds{(8,2,4,1)}$ is $G$ relative to $N=\{1,b\}$.
+    \[
+      \arraycolsep=10.0pt\def\arraystretch{2.0}
+      \begin{array}{c|cccc}
+        \text{ } & b & a & a^2 & a^4 \\ \hline
+        b & 1 & ba^6 & ba^5 & ba^3 \\
+        a & ab & 1 & a^6 & a^4 \\
+        a^2 & a^2b & \RR{ a } & 1 & a^5 \\
+        a^4 & a^4b & a^3 & a^2 & 1
+      \end{array}
+    \]
+  \item $b$ does not appear!
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Let $G=\langle a,b : a^7=b^2=1 \rangle \cong C_{14}$.
+  \item $R=\{b,a,a^2,a^4\}$ is an $\rds{(8,2,4,1)}$ is $G$ relative to $N=\{1,b\}$.
+    \[
+      \arraycolsep=10.0pt\def\arraystretch{2.0}
+      \begin{array}{c|cccc}
+        \text{ } & b & a & a^2 & a^4 \\ \hline
+        b & 1 & ba^6 & ba^5 & ba^3 \\
+        a & ab & 1 & a^6 & a^4 \\
+        a^2 & a^2b & a & 1 & a^5 \\
+        a^4 & a^4b & a^3 & \RR{ a^2 } & 1
+      \end{array}
+    \]
+  \item $b$ does not appear!
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Form $a^iN$ and $a^iR$ for each $a^i \in \langle a \rangle$.
+  \item Each $a^iN \cap a^jR = \emptyset$, $\{a^n\}$, or $\{a^mb\}$.
+  \item Construct the $7 \times 7$ matrix $B$ by
+    \[
+      B_{a^i,a^j} = 
+      \begin{cases}
+        0 & \text{if $a^iN \cap a^jR=\emptyset$,} \\
+        1  & \text{if $a^iN \cap a^jR=\{a^n\}$, and} \\
+        b & \text{if $a^iN \cap a^jR=\{a^mb\}$.}
+      \end{cases}
+    \]
+  \item General construction due to Jungnickel (1982).
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Using the methods above, the following is known.
+  \end{itemize}
+
+  \begin{block}{{\bf Theorem.} RDS construction of BWs}
+    There is a $BW$ with parameters
+    \[
+      \left(
+        \frac{q^{d+1}-1}{q-1}, q^d
+      \right)
+    \]
+    whenever (1) $q$ odd and $d$ arbitrary and (2) $q$ and $d$ even.
+  \end{block}
+
+  \begin{itemize}
+  \item[(1)] Nonlinear hyperplanes of $GF(q^{d+1}) : GF(q)$ due to Bose (1942).
+  \item[(2)] Lifting of a ``Waterloo decomposition'' of classical difference
+    sets due to Arasu, et al. (1995).
+  \end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% section -- unifying construction
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Novel Construction of Weighing Matrices}
+
+\begin{frame}
+  \[
+    \begin{array}{c}
+      \text{\huge\bf Novel Construction of}
+      \\
+      \text{\huge\bf Weighing Matrices}
+    \end{array}
+  \]
+\end{frame}
+
+\begin{frame}{Section Summary}
+  \tableofcontents[sections={2}]
+\end{frame}
+
+% subsection %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+
+\subsection{Ingredients}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Equivalencies of weighing matrices (and BWs):
+    \begin{itemize}
+    \item permutations of rows
+    \item permutations of columns
+    \item negation of rows
+    \item negation of columns
+    \end{itemize}
+  \item Every weighing matrix is equivalent to one of the following form
+    \[
+      \begin{pmatrix}
+        \textbf{0} & \RR{R} \\
+        \textbf{1} & \BB{D}
+      \end{pmatrix}.
+    \]
+  \item $\RR{R}$ is the residual-part.
+  \item $\BB{D}$ is the derived-part.
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+
+  \begin{block}{{\bf Definition.} Simplex Code}
+    \begin{itemize}
+    \item $q$ a prime power and $d>0$.
+    \item Form matrix $G$ with columns given by reps. of 1-D subspaces of
+      $GF(q^{d+1})$ .
+    \item The simplex code is $\mathcal{S}_{q,d}=row(G)$.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{{\bf Proposition.} Properties}
+    For $\mathcal{S}_{q,d}$:
+    \begin{itemize}
+    \item $wt(x) = q^d$ for all $x \in \mathcal{S}_{q,d} / \{\mathbf{0}\}$, and
+    \item $dist(x,y)=q^d$ for all $x,y \in \mathcal{S}_{q,d}$ and $x \neq y$
+    \end{itemize}
+  \end{block}
+  
+\end{frame}
+
+% subsection %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Recipie}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Ingredients of unifying construction:
+    \begin{itemize} 
+    \item A normalized $W(v,q)$ (seed matrix) with residual-part $\RR{R}$ and
+      derived-part $\BB{D}$.
+    \item A $W((q^{d+1}-1)/(q-1),q^d)$, say $W$.
+    \item A simplex code $\mathcal{S}_{q,d}$.
+    \end{itemize}
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Recipie of unifying construction:
+    \begin{itemize}
+    \item Form $\RR{A} = W \otimes \RR{R}$.
+    \item Form $\BB{B}$ by replacing elements of $\mathcal{S}_{q,d}$ by rows of
+      $\BB{D}$. 
+    \item Then
+      \[
+        \begin{pmatrix}
+          \textbf{0} & \RR{A} \\
+          \textbf{1} & \BB{B}
+        \end{pmatrix}
+      \]
+      is a $W((v-1)(q^{d+1}-1)/(q-1)+1,q^{d+1})$.
+    \end{itemize}
+  \end{itemize}
+  
+\end{frame}
+
+{
+\newcommand{\rbox}{\RR{\mbox{\rule{0.5in}{0.3in}}}}
+\newcommand{\bbox}{\BB{\mbox{\rule{0.5in}{0.05in}}}}
+
+\begin{frame}
+
+  \[
+    \left(
+      \begin{array}{c|cccc}
+        0 & \rbox & \rbox & \cdots & \rbox \\
+        0 & \rbox & \rbox & \cdots & \rbox \\
+        \vdots & \vdots & \vdots &  & \vdots \\
+        0 & \rbox & \rbox & \cdots & \rbox \\ \hline
+        1 & \bbox & \bbox & \cdots & \bbox \\
+        1 & \bbox & \bbox & \cdots & \bbox \\
+        \vdots & \vdots & \vdots &  & \vdots \\
+        1 & \bbox & \bbox & \cdots & \bbox \\
+      \end{array}
+    \right)
+  \]
+  
+\end{frame}
+}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item A seed $W(8,5)$
+    \[
+      \begin{pmatrix}
+        \textbf{0} & \RR{R} \\
+        \textbf{1} & \BB{D}
+      \end{pmatrix}
+      =
+      \left(
+        % \arraycolsep=1.0pt\def\arraystretch{1.0}
+        \begin{array}{c|ccccccc}
+          0&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{+}&\RR{+}\\
+          0&\RR{0}&\RR{+}&\RR{0}&\RR{+}&\RR{-}&\RR{-}&\RR{+}\\
+          0&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{-}&\RR{+}&\RR{-}\\ \hline
+          +&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}\\
+          +&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}\\
+          +&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}\\
+          +&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}\\
+          +&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}\\
+        \end{array}
+      \right)
+    \]
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item A classical parameter $W(6,5)$
+    \[
+      W =
+      \begin{pmatrix}
+        -&+&-&0&+&+\\
+        -&-&+&-&0&+\\
+        -&-&-&+&-&0\\
+        0&-&-&-&+&-\\
+        +&0&-&-&-&+\\
+        -&+&0&-&-&-\\
+      \end{pmatrix}.
+    \]
+  \item The simplex code $\mathcal{S}_{5,1}$ (transposed)
+    \[
+      \left(
+        \arraycolsep=2.0pt\def\arraystretch{1.0}
+        \begin{array}{ccccccccccccccccccccccccc}
+          1&2&3&4&0&1&2&3&4&0&1&2&3&4&0&1&2&3&4&0&1&2&3&4&0\\
+          1&1&1&1&1&2&2&2&2&2&3&3&3&3&3&4&4&4&4&4&0&0&0&0&0\\
+          2&4&0&3&1&4&3&1&0&2&0&1&4&2&3&3&0&2&1&4&1&2&3&4&0\\
+          4&0&3&2&1&3&1&0&4&2&1&4&2&0&3&0&2&1&3&4&2&3&4&1&0\\
+          0&3&2&4&1&1&0&4&3&2&4&2&0&1&3&2&1&3&0&4&3&4&1&2&0\\
+          3&2&4&0&1&0&4&3&1&2&2&0&1&4&3&1&3&0&2&4&4&1&2&3&0\\
+        \end{array}
+      \right)
+    \]
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Take $\RR{A}=W \otimes \RR{R}$.
+  \item Take $\BB{B}$ to be the matrix formed after replacing the entries of
+    $S_{5,1}$ by the rows of $\BB{D}$.
+  \item Then
+    \[
+      \begin{pmatrix}
+        \textbf{0} & \RR{A} \\
+        \textbf{1} & \BB{B}
+      \end{pmatrix}
+    \]
+    is a $W(43,25)$.
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+
+  \begin{tiny}
+    \[
+      \left(
+        \arraycolsep=0.5pt\def\arraystretch{0.5}
+        \begin{array}{c|cccccccccccccccccccccccccccccccccccccccccc}
+          0&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{+}&\RR{+}\\
+
+
+0&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{+}&\RR{0}&\RR{+}&\RR{-}&\RR{-}&\RR{+}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{0}&\RR{+}&\RR{-}&\RR{-}&\RR{+}&\RR{0}&\RR{+}&\RR{0}&\RR{+}&\RR{-}&\RR{-}&\RR{+}\\
+          0&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{-}&\RR{+}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{-}&\RR{+}&\RR{-}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{-}&\RR{+}&\RR{-}\\
+          0&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{+}&\RR{+}\\
+          0&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{+}&\RR{0}&\RR{+}&\RR{-}&\RR{-}&\RR{+}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{0}&\RR{+}&\RR{-}&\RR{-}&\RR{+}\\
+          0&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{-}&\RR{+}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{-}&\RR{+}&\RR{-}\\
+          0&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}\\
+          0&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{+}&\RR{0}&\RR{+}&\RR{-}&\RR{-}&\RR{+}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}\\
+          0&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{-}&\RR{+}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}\\
+          0&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}\\
+          0&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{+}&\RR{0}&\RR{+}&\RR{-}&\RR{-}&\RR{+}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}\\
+          0&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{-}&\RR{+}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}\\
+          0&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{+}&\RR{+}\\
+          0&\RR{0}&\RR{+}&\RR{0}&\RR{+}&\RR{-}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{+}&\RR{0}&\RR{+}&\RR{-}&\RR{-}&\RR{+}\\
+          0&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{-}&\RR{+}&\RR{-}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{-}&\RR{+}&\RR{-}\\
+          0&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{-}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{-}&\RR{-}\\
+          0&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{+}&\RR{0}&\RR{+}&\RR{-}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{+}&\RR{+}&\RR{-}\\
+          0&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{-}&\RR{+}&\RR{-}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{-}&\RR{-}&\RR{+}&\RR{-}&\RR{+}\\ \hline
+          +&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}\\
+          +&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}\\
+          +&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}\\
+          +&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}\\
+          +&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}\\
+          +&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}\\
+          +&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}\\
+          +&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}\\
+          +&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}\\
+          +&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}\\
+          +&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}\\
+          +&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}\\
+          +&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}\\
+          +&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}\\
+          +&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}\\
+          +&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}\\
+          +&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}\\
+          +&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}\\
+          +&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}\\
+          +&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}\\
+          +&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}\\
+          +&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}\\
+          +&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}\\
+          +&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{-}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{+}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}\\
+          +&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{-}&\BB{-}\\
+        \end{array}
+      \right)
+    \]
+  \end{tiny}
+  
+\end{frame}
+
+\begin{frame}
+
+  \begin{block}{{\bf Theorem.} (Kharaghani, et al., 2022b)}
+    If there is a $W(v,q)$, then there is a weighing matrix with parameters
+    \[
+      \left(
+        \frac{(v-1)(q^{d+1}-1)}{q-1}+1, q^{d+1}
+      \right)
+    \]
+    whenever:
+    \begin{enumerate}
+    \item $q$ is odd and every $d>0$, and
+    \item $q$ and $d$ are both even.
+    \end{enumerate}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{scriptsize}
+    \begin{longtable}[c]{rl|rl}
+
+      Seed $(v,k)$ & Succident $(v',k')$ & Seed $(v,k)$ & Succident $(v',k')$ \\
+      \hline
+      \endfirsthead
+
+      \multicolumn{4}{c}{\it Continuation of Table.}\\
+      Seed $(v,k)$ & Succident $(v',k')$ & Seed $(v,k)$ & Succident $(v',k')$ \\
+      \hline
+      \endhead
+
+      \endfoot
+
+      $(6,5)$: & $(31,25)$, $(156,125)$, $(781,625)$ & $(16,3)$: & $(69,9)$, $(196,27)$, $(601,81)$ \\
+      $(8,5)$: & $\RR{(43,25)}$, $(218,125)$ & $(16,5)$: & $(91,25)$, $(466,125)$ \\
+      $(8,7)$: & $(57,49)$, $(400,343)$ & $(16,7)$: & $(121,49)$, $(856,343)$ \\
+      $(10,5)$: & $(55,25)$, $(280,125)$ & $(16,9)$: & $(151,81)$ \\
+      $(10,9)$: & $(91,81)$, $(820,729)$ & $(16,11)$: & $\RR{(181,121)}$ \\
+      $(12,5)$: & $(67,25)$, $(342,125)$ & $(16,13)$: & $(211,169)$ \\
+      $(12,7)$: & $\RR{(89,49)}$, $(628,343)$ & $(18,13)$: & $(239,169)$ \\
+      $(12,9)$: & $\RR{(111,81)}$ & $(19,9)$: & $(181,81)$ \\
+      $(13,9)$: & $(121,81)$ & $(20,7)$: & $(153,49)$ \\
+      $(14,9)$: & $(131,81)$ & $(20,13)$: & $\RR{(267,169)}$ \\
+      $(14,13)$: & $(183,169)$ & & \\
+
+    \end{longtable}
+  \end{scriptsize}
+  
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% section -- new class of BWGs
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{A New Class of Balanced Weighing Matrices}
+
+\begin{frame}
+  \[
+    \text{\huge\bf A New Class of BWs}
+  \]
+\end{frame}
+
+\begin{frame}{Section Summary}
+  \tableofcontents[sections={3}]
+\end{frame}
+
+% subsection %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Seed Matrix}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Our example  $BW(19,9)$:
+    \[
+      W=
+      \arraycolsep=1.25pt\def\arraystretch{0.625}
+      \left(
+        \begin{array}{c|cccccccccccccccccc}
+          0&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}\\
+          0&\RR{0}&\RR{-}&\RR{-}&\RR{0}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{-}&\RR{+}&\RR{+}&\RR{0}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}\\
+          0&\RR{-}&\RR{0}&\RR{-}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{0}&\RR{0}\\
+          0&\RR{-}&\RR{-}&\RR{0}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{0}&\RR{+}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{0}\\
+          0&\RR{0}&\RR{0}&\RR{+}&\RR{0}&\RR{-}&\RR{-}&\RR{0}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{-}&\RR{+}&\RR{+}&\RR{0}&\RR{+}&\RR{0}\\
+          0&\RR{+}&\RR{0}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{+}\\
+          0&\RR{0}&\RR{+}&\RR{0}&\RR{-}&\RR{-}&\RR{0}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{0}&\RR{+}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}\\
+          0&\RR{0}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{0}&\RR{-}&\RR{-}&\RR{0}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{-}&\RR{+}&\RR{+}\\
+          0&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{0}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{-}&\RR{+}\\
+          0&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{0}&\RR{-}&\RR{-}&\RR{0}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{0}&\RR{+}&\RR{+}&\RR{-}\\ \hline
+          +&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{-}&\BB{-}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}\\
+          +&\BB{0}&\BB{0}&\BB{0}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{0}&\BB{0}\\
+          +&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}\\
+          +&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{-}&\BB{0}&\BB{+}&\BB{0}\\
+          +&\BB{0}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{-}&\BB{+}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{+}\\
+          +&\BB{-}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{-}&\BB{+}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{-}&\BB{0}&\BB{+}&\BB{0}&\BB{0}\\
+          +&\BB{+}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{-}\\
+          +&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{0}&\BB{0}&\BB{-}&\BB{0}&\BB{-}\\
+          +&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{-}&\BB{0}\\
+        \end{array}
+      \right)
+    \]
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \[
+    \RR{R_1} =
+    \left(
+      \arraycolsep=3.0pt\def\arraystretch{1.0}
+      \begin{array}{cccccccccccccccccc}
+        \RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}\\
+        \RR{0}&\RR{-}&\RR{-}&\RR{0}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{-}&\RR{+}&\RR{+}&\RR{0}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}\\
+        \RR{-}&\RR{0}&\RR{-}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{0}&\RR{0}\\
+        \RR{-}&\RR{-}&\RR{0}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{0}&\RR{+}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{0}\\
+        \RR{0}&\RR{0}&\RR{+}&\RR{0}&\RR{-}&\RR{-}&\RR{0}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{-}&\RR{+}&\RR{+}&\RR{0}&\RR{+}&\RR{0}\\
+        \RR{+}&\RR{0}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}&\RR{+}\\
+        \RR{0}&\RR{+}&\RR{0}&\RR{-}&\RR{-}&\RR{0}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{0}&\RR{+}&\RR{+}&\RR{-}&\RR{+}&\RR{0}&\RR{0}\\
+        \RR{0}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{0}&\RR{-}&\RR{-}&\RR{0}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{-}&\RR{+}&\RR{+}\\
+        \RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{0}&\RR{0}&\RR{-}&\RR{0}&\RR{-}&\RR{0}&\RR{0}&\RR{+}&\RR{+}&\RR{0}&\RR{0}&\RR{+}&\RR{-}&\RR{+}\\
+        \RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{0}&\RR{-}&\RR{-}&\RR{0}&\RR{+}&\RR{0}&\RR{0}&\RR{0}&\RR{+}&\RR{0}&\RR{+}&\RR{+}&\RR{-}\\
+      \end{array}
+    \right)
+  \]
+  
+\end{frame}
+
+\begin{frame}
+
+  \[
+    \RR{\abs{R_1}} = 
+    \left(
+      \arraycolsep=3.0pt\def\arraystretch{1.0}
+      \begin{array}{cccccccccccccccccc}
+        \RR{1}&\RR{1}&\RR{1}&\RR{1}&\RR{1}&\RR{1}&\RR{1}&\RR{1}&\RR{1}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}\\
+        \RR{0}&\RR{1}&\RR{1}&\RR{0}&\RR{1}&\RR{0}&\RR{0}&\RR{0}&\RR{1}&\RR{1}&\RR{1}&\RR{1}&\RR{0}&\RR{1}&\RR{0}&\RR{0}&\RR{0}&\RR{1}\\
+        \RR{1}&\RR{0}&\RR{1}&\RR{0}&\RR{0}&\RR{1}&\RR{1}&\RR{0}&\RR{0}&\RR{1}&\RR{1}&\RR{1}&\RR{0}&\RR{0}&\RR{1}&\RR{1}&\RR{0}&\RR{0}\\
+        \RR{1}&\RR{1}&\RR{0}&\RR{1}&\RR{0}&\RR{0}&\RR{0}&\RR{1}&\RR{0}&\RR{1}&\RR{1}&\RR{1}&\RR{1}&\RR{0}&\RR{0}&\RR{0}&\RR{1}&\RR{0}\\
+        \RR{0}&\RR{0}&\RR{1}&\RR{0}&\RR{1}&\RR{1}&\RR{0}&\RR{1}&\RR{0}&\RR{0}&\RR{0}&\RR{1}&\RR{1}&\RR{1}&\RR{1}&\RR{0}&\RR{1}&\RR{0}\\
+        \RR{1}&\RR{0}&\RR{0}&\RR{1}&\RR{0}&\RR{1}&\RR{0}&\RR{0}&\RR{1}&\RR{1}&\RR{0}&\RR{0}&\RR{1}&\RR{1}&\RR{1}&\RR{0}&\RR{0}&\RR{1}\\
+        \RR{0}&\RR{1}&\RR{0}&\RR{1}&\RR{1}&\RR{0}&\RR{1}&\RR{0}&\RR{0}&\RR{0}&\RR{1}&\RR{0}&\RR{1}&\RR{1}&\RR{1}&\RR{1}&\RR{0}&\RR{0}\\
+        \RR{0}&\RR{1}&\RR{0}&\RR{0}&\RR{0}&\RR{1}&\RR{0}&\RR{1}&\RR{1}&\RR{0}&\RR{1}&\RR{0}&\RR{0}&\RR{0}&\RR{1}&\RR{1}&\RR{1}&\RR{1}\\
+        \RR{0}&\RR{0}&\RR{1}&\RR{1}&\RR{0}&\RR{0}&\RR{1}&\RR{0}&\RR{1}&\RR{0}&\RR{0}&\RR{1}&\RR{1}&\RR{0}&\RR{0}&\RR{1}&\RR{1}&\RR{1}\\
+        \RR{1}&\RR{0}&\RR{0}&\RR{0}&\RR{1}&\RR{0}&\RR{1}&\RR{1}&\RR{0}&\RR{1}&\RR{0}&\RR{0}&\RR{0}&\RR{1}&\RR{0}&\RR{1}&\RR{1}&\RR{1}\\
+      \end{array}
+    \right)
+  \]
+  
+\end{frame}
+
+\begin{frame}
+
+  \[
+    \MM{\abs{R_2}} = J-\RR{\abs{R_1}} =
+    \left(
+      \arraycolsep=3.0pt\def\arraystretch{1.0}
+      \begin{array}{cccccccccccccccccc}
+        \MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{1}&\MM{1}&\MM{1}&\MM{1}&\MM{1}&\MM{1}&\MM{1}&\MM{1}&\MM{1}\\
+        \MM{1}&\MM{0}&\MM{0}&\MM{1}&\MM{0}&\MM{1}&\MM{1}&\MM{1}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{1}&\MM{0}&\MM{1}&\MM{1}&\MM{1}&\MM{0}\\
+        \MM{0}&\MM{1}&\MM{0}&\MM{1}&\MM{1}&\MM{0}&\MM{0}&\MM{1}&\MM{1}&\MM{0}&\MM{0}&\MM{0}&\MM{1}&\MM{1}&\MM{0}&\MM{0}&\MM{1}&\MM{1}\\
+        \MM{0}&\MM{0}&\MM{1}&\MM{0}&\MM{1}&\MM{1}&\MM{1}&\MM{0}&\MM{1}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{1}&\MM{1}&\MM{1}&\MM{0}&\MM{1}\\
+        \MM{1}&\MM{1}&\MM{0}&\MM{1}&\MM{0}&\MM{0}&\MM{1}&\MM{0}&\MM{1}&\MM{1}&\MM{1}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{1}&\MM{0}&\MM{1}\\
+        \MM{0}&\MM{1}&\MM{1}&\MM{0}&\MM{1}&\MM{0}&\MM{1}&\MM{1}&\MM{0}&\MM{0}&\MM{1}&\MM{1}&\MM{0}&\MM{0}&\MM{0}&\MM{1}&\MM{1}&\MM{0}\\
+        \MM{1}&\MM{0}&\MM{1}&\MM{0}&\MM{0}&\MM{1}&\MM{0}&\MM{1}&\MM{1}&\MM{1}&\MM{0}&\MM{1}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{1}&\MM{1}\\
+        \MM{1}&\MM{0}&\MM{1}&\MM{1}&\MM{1}&\MM{0}&\MM{1}&\MM{0}&\MM{0}&\MM{1}&\MM{0}&\MM{1}&\MM{1}&\MM{1}&\MM{0}&\MM{0}&\MM{0}&\MM{0}\\
+        \MM{1}&\MM{1}&\MM{0}&\MM{0}&\MM{1}&\MM{1}&\MM{0}&\MM{1}&\MM{0}&\MM{1}&\MM{1}&\MM{0}&\MM{0}&\MM{1}&\MM{1}&\MM{0}&\MM{0}&\MM{0}\\
+        \MM{0}&\MM{1}&\MM{1}&\MM{1}&\MM{0}&\MM{1}&\MM{0}&\MM{0}&\MM{1}&\MM{0}&\MM{1}&\MM{1}&\MM{1}&\MM{0}&\MM{1}&\MM{0}&\MM{0}&\MM{0}\\
+      \end{array}
+    \right)
+  \]
+  
+\end{frame}
+
+\begin{frame}
+
+  \[
+    \MM{R_2} =
+    \left(
+      \arraycolsep=3.0pt\def\arraystretch{1.0}
+      \begin{array}{cccccccccccccccccc}
+        \MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{+}&\MM{+}&\MM{+}&\MM{+}&\MM{+}&\MM{+}&\MM{+}&\MM{+}&\MM{+}\\
+        \MM{-}&\MM{0}&\MM{0}&\MM{+}&\MM{0}&\MM{+}&\MM{+}&\MM{+}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{+}&\MM{0}&\MM{-}&\MM{+}&\MM{-}&\MM{0}\\
+        \MM{0}&\MM{-}&\MM{0}&\MM{+}&\MM{+}&\MM{0}&\MM{0}&\MM{+}&\MM{+}&\MM{0}&\MM{0}&\MM{0}&\MM{-}&\MM{+}&\MM{0}&\MM{0}&\MM{+}&\MM{-}\\
+        \MM{0}&\MM{0}&\MM{-}&\MM{0}&\MM{+}&\MM{+}&\MM{+}&\MM{0}&\MM{+}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{-}&\MM{+}&\MM{-}&\MM{0}&\MM{+}\\
+        \MM{+}&\MM{+}&\MM{0}&\MM{-}&\MM{0}&\MM{0}&\MM{+}&\MM{0}&\MM{+}&\MM{+}&\MM{-}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{+}&\MM{0}&\MM{-}\\
+        \MM{0}&\MM{+}&\MM{+}&\MM{0}&\MM{-}&\MM{0}&\MM{+}&\MM{+}&\MM{0}&\MM{0}&\MM{+}&\MM{-}&\MM{0}&\MM{0}&\MM{0}&\MM{-}&\MM{+}&\MM{0}\\
+        \MM{+}&\MM{0}&\MM{+}&\MM{0}&\MM{0}&\MM{-}&\MM{0}&\MM{+}&\MM{+}&\MM{-}&\MM{0}&\MM{+}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{-}&\MM{+}\\
+        \MM{+}&\MM{0}&\MM{+}&\MM{+}&\MM{+}&\MM{0}&\MM{-}&\MM{0}&\MM{0}&\MM{+}&\MM{0}&\MM{-}&\MM{+}&\MM{-}&\MM{0}&\MM{0}&\MM{0}&\MM{0}\\
+        \MM{+}&\MM{+}&\MM{0}&\MM{0}&\MM{+}&\MM{+}&\MM{0}&\MM{-}&\MM{0}&\MM{-}&\MM{+}&\MM{0}&\MM{0}&\MM{+}&\MM{-}&\MM{0}&\MM{0}&\MM{0}\\
+        \MM{0}&\MM{+}&\MM{+}&\MM{+}&\MM{0}&\MM{+}&\MM{0}&\MM{0}&\MM{-}&\MM{0}&\MM{-}&\MM{+}&\MM{-}&\MM{0}&\MM{+}&\MM{0}&\MM{0}&\MM{0}\\
+      \end{array}
+    \right)
+  \]
+
+\end{frame}
+
+\begin{frame}
+
+  \[
+    W' =
+    \left(
+      \arraycolsep=1.25pt\def\arraystretch{0.625}
+      \begin{array}{c|cccccccccccccccccc}
+        0&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{+}&\MM{+}&\MM{+}&\MM{+}&\MM{+}&\MM{+}&\MM{+}&\MM{+}&\MM{+}\\
+        0&\MM{-}&\MM{0}&\MM{0}&\MM{+}&\MM{0}&\MM{+}&\MM{+}&\MM{+}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{+}&\MM{0}&\MM{-}&\MM{+}&\MM{-}&\MM{0}\\
+        0&\MM{0}&\MM{-}&\MM{0}&\MM{+}&\MM{+}&\MM{0}&\MM{0}&\MM{+}&\MM{+}&\MM{0}&\MM{0}&\MM{0}&\MM{-}&\MM{+}&\MM{0}&\MM{0}&\MM{+}&\MM{-}\\
+        0&\MM{0}&\MM{0}&\MM{-}&\MM{0}&\MM{+}&\MM{+}&\MM{+}&\MM{0}&\MM{+}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{-}&\MM{+}&\MM{-}&\MM{0}&\MM{+}\\
+        0&\MM{+}&\MM{+}&\MM{0}&\MM{-}&\MM{0}&\MM{0}&\MM{+}&\MM{0}&\MM{+}&\MM{+}&\MM{-}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{+}&\MM{0}&\MM{-}\\
+        0&\MM{0}&\MM{+}&\MM{+}&\MM{0}&\MM{-}&\MM{0}&\MM{+}&\MM{+}&\MM{0}&\MM{0}&\MM{+}&\MM{-}&\MM{0}&\MM{0}&\MM{0}&\MM{-}&\MM{+}&\MM{0}\\
+        0&\MM{+}&\MM{0}&\MM{+}&\MM{0}&\MM{0}&\MM{-}&\MM{0}&\MM{+}&\MM{+}&\MM{-}&\MM{0}&\MM{+}&\MM{0}&\MM{0}&\MM{0}&\MM{0}&\MM{-}&\MM{+}\\
+        0&\MM{+}&\MM{0}&\MM{+}&\MM{+}&\MM{+}&\MM{0}&\MM{-}&\MM{0}&\MM{0}&\MM{+}&\MM{0}&\MM{-}&\MM{+}&\MM{-}&\MM{0}&\MM{0}&\MM{0}&\MM{0}\\
+        0&\MM{+}&\MM{+}&\MM{0}&\MM{0}&\MM{+}&\MM{+}&\MM{0}&\MM{-}&\MM{0}&\MM{-}&\MM{+}&\MM{0}&\MM{0}&\MM{+}&\MM{-}&\MM{0}&\MM{0}&\MM{0}\\
+        0&\MM{0}&\MM{+}&\MM{+}&\MM{+}&\MM{0}&\MM{+}&\MM{0}&\MM{0}&\MM{-}&\MM{0}&\MM{-}&\MM{+}&\MM{-}&\MM{0}&\MM{+}&\MM{0}&\MM{0}&\MM{0}\\ \hline
+        +&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{-}&\BB{-}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}\\
+        +&\BB{0}&\BB{0}&\BB{0}&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{0}&\BB{0}\\
+        +&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{+}&\BB{-}&\BB{-}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}\\
+        +&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{-}&\BB{0}&\BB{+}&\BB{0}\\
+        +&\BB{0}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{-}&\BB{+}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{-}&\BB{0}&\BB{-}&\BB{0}&\BB{0}&\BB{+}\\
+        +&\BB{-}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{-}&\BB{+}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{-}&\BB{0}&\BB{+}&\BB{0}&\BB{0}\\
+        +&\BB{+}&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{-}\\
+        +&\BB{-}&\BB{+}&\BB{0}&\BB{0}&\BB{+}&\BB{-}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{+}&\BB{0}&\BB{0}&\BB{-}&\BB{0}&\BB{-}\\
+        +&\BB{0}&\BB{-}&\BB{+}&\BB{-}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{0}&\BB{0}&\BB{+}&\BB{0}&\BB{-}&\BB{-}&\BB{0}\\
+      \end{array}
+    \right)
+  \]
+  
+\end{frame}
+
+% subsection %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Construction}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Let $G$ be a finite group not containing the symbol 0.
+  \item For $A \subseteq G$, identify $A=\sum_{g \in A}g$ in $\Z[G]$.
+  \item For $A \in \Z[G]$, write $A^{(h)}=\sum_{g \in G} a_gg^h$.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Let $\Theta$ be a $v \times v$ $(0,G)$-matrix.
+  \item We interpret $\Theta$ as a matrix over $\Z[G]$.
+  \item Define $\Theta^{(h)}$ by $\Theta_{ij}^{(h)}$.
+  \item Write $\Theta^* = (\Theta^{(-1)})^t$.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{block}{{\bf Definition.} Balanced generalized weighing matrices}
+    \begin{itemize}
+    \item $G$ a finite group of order $n$.
+    \item A $v \times v$ $(0,G)$-matrix $\Theta$ is a $BGW(v,k,\lambda; G)$ if
+      \[
+        \Theta\Theta^* = (k \cdot e)I + \frac{\lambda G}{n}(J-I).
+      \]
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{{\bf Theorem.} Classical BGWs}
+    \begin{itemize}
+    \item Let $q$ be a prime power and $d>0$ an integer.
+    \item For each $q$ and $d$ there is a $BGW$ with parameters
+      \[
+        \left(
+          \frac{q^{d+1}-1}{q-1}, q^d, q^d-q^{d-1}
+        \right)
+      \]
+      over $C_{q-1}$.
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item A $BGW(10,9,8; C_4)$:
+    \[
+      \left(
+        \arraycolsep=3.0pt\def\arraystretch{1.25}
+      \begin{array}{cccccccccc}
+        1&a&1&a^3&a&0&1&a&a&a\\
+        a^2&1&a&1&a^3&a&0&1&a&a\\
+        a^2&a^2&1&a&1&a^3&a&0&1&a\\
+        a^2&a^2&a^2&1&a&1&a^3&a&0&1\\
+        a&a^2&a^2&a^2&1&a&1&a^3&a&0\\
+        0&a&a^2&a^2&a^2&1&a&1&a^3&a\\
+        a^2&0&a&a^2&a^2&a^2&1&a&1&a^3\\
+        1&a^2&0&a&a^2&a^2&a^2&1&a&1\\
+        a&1&a^2&0&a&a^2&a^2&a^2&1&a\\
+        a^2&a&1&a^2&0&a&a^2&a^2&a^2&1\\
+      \end{array}
+      \right)
+    \]
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Decomposition matrices:
+    \[
+      \left(
+        \arraycolsep=3.0pt\def\arraystretch{1.25}
+        \begin{array}{cccccccccc}
+          1&\RR{a}&1&a^3&\RR{a}&0&1&\RR{a}&\RR{a}&\RR{a}\\
+          a^2&1&\RR{a}&1&a^3&\RR{a}&0&1&\RR{a}&\RR{a}\\
+          a^2&a^2&1&\RR{a}&1&a^3&\RR{a}&0&1&\RR{a}\\
+          a^2&a^2&a^2&1&\RR{a}&1&a^3&\RR{a}&0&1\\
+          \RR{a}&a^2&a^2&a^2&1&\RR{a}&1&a^3&\RR{a}&0\\
+          0&\RR{a}&a^2&a^2&a^2&1&\RR{a}&1&a^3&\RR{a}\\
+          a^2&0&\RR{a}&a^2&a^2&a^2&1&\RR{a}&1&a^3\\
+          1&a^2&0&\RR{a}&a^2&a^2&a^2&1&\RR{a}&1\\
+          \RR{a}&1&a^2&0&\RR{a}&a^2&a^2&a^2&1&\RR{a}\\
+          a^2&\RR{a}&1&a^2&0&\RR{a}&a^2&a^2&a^2&1\\
+        \end{array}
+      \right)   
+    \]
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Decomposition matrices:
+    \[
+      \left(
+        \arraycolsep=6.0pt\def\arraystretch{1.25}
+        \begin{array}{cccccccccc}
+          0&1&0&0&1&0&0&1&1&1\\
+          0&0&1&0&0&1&0&0&1&1\\
+          0&0&0&1&0&0&1&0&0&1\\
+          0&0&0&0&1&0&0&1&0&0\\
+          1&0&0&0&0&1&0&0&1&0\\
+          0&1&0&0&0&0&1&0&0&1\\
+          0&0&1&0&0&0&0&1&0&0\\
+          0&0&0&1&0&0&0&0&1&0\\
+          1&0&0&0&1&0&0&0&0&1\\
+          0&1&0&0&0&1&0&0&0&0\\
+        \end{array}
+      \right)
+    \]
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Let $\Theta$ be a BGW with parameters
+    \[
+      \left(
+        \frac{9^{d+1}-1}{8}, 9^d, 9^d-9^{d-1}
+      \right)
+    \]
+    over the aroup $C_4 = \langle a : a^4=1 \rangle$.
+  \item Decompose $\Theta$ as
+    \[
+      \Theta = \Theta_1 + a\Theta_a + a^2\Theta_{a^2} + a^3\Theta_{a^3},
+    \]
+    where the $\Theta_i$s are disjoint $(0,1)$-matrices.
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Apply $\RR{R_1} \mapsto -\MM{R_2} \mapsto -\RR{R_1} \mapsto
+    \MM{R_2} \mapsto \RR{R_1}$.
+  \item Form:
+    \begin{align*}
+      \Theta \otimes \RR{R_1} &= \Theta_1 \otimes \RR{R_1} + \Theta_a \otimes \RR{R_1}^a +
+                                \Theta_{a^2} \otimes \RR{R_1}^{a^2} + \Theta_{a^3} \otimes \RR{R_1}^{a^3} \\
+                              &= \Theta_1 \otimes \RR{R_1} - \Theta_a \otimes
+                                \MM{R_2} - \Theta_{a^2} \otimes \RR{R_1} + \Theta_{a^3} \otimes \MM{R_2}
+    \end{align*}
+  \item Form $\BB{D}$ by substituting for the elements of $S_{9,d}$ the rows
+    of the derived part of $W_{19}$.
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item The matrix
+    \[
+      \begin{pmatrix}
+        \textbf{0} & \Theta \otimes \RR{R_1} \\
+        \textbf{1} & \BB{D}
+      \end{pmatrix}
+    \]
+    is a balanced weighing matrix.
+  \end{itemize}
+
+  \begin{block}{{\bf Theorem.} (Kharaghani, et al., 2022a)}
+    For every $d>0$, there is a balanced weighing matrix with parameters
+    \[
+      \left(
+        \frac{9^{d+2}-9}{4} + 1, 9^{d+1}
+      \right).
+    \]
+  \end{block}
+
+  \begin{itemize}
+  \item These are signings of some of the Ionin-type symmetric designs (Ionin,
+    2001).
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{center}
+    {\Large\bf Why not more infinite families?}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item A $BGW(15,7,3; C_3)$:
+    \[
+      \left(
+        \arraycolsep=2.0pt\def\arraystretch{1.0}
+        \begin{array}{c|cccccccccccccc}
+          0&\RR{a}&\RR{a}&\RR{a}&\RR{a}&\RR{a}&\RR{a}&\RR{a}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}\\
+          0&\RR{1}&\RR{a^2}&\RR{0}&\RR{a}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{a^2}&\RR{0}&\RR{a^2}&\RR{a^2}&\RR{1}\\
+          0&\RR{0}&\RR{1}&\RR{a^2}&\RR{0}&\RR{a}&\RR{0}&\RR{0}&\RR{1}&\RR{0}&\RR{0}&\RR{a^2}&\RR{0}&\RR{a^2}&\RR{a^2}\\
+          0&\RR{0}&\RR{0}&\RR{1}&\RR{a^2}&\RR{0}&\RR{a}&\RR{0}&\RR{a^2}&\RR{1}&\RR{0}&\RR{0}&\RR{a^2}&\RR{0}&\RR{a^2}\\
+          0&\RR{0}&\RR{0}&\RR{0}&\RR{1}&\RR{a^2}&\RR{0}&\RR{a}&\RR{a^2}&\RR{a^2}&\RR{1}&\RR{0}&\RR{0}&\RR{a^2}&\RR{0}\\
+          0&\RR{a}&\RR{0}&\RR{0}&\RR{0}&\RR{1}&\RR{a^2}&\RR{0}&\RR{0}&\RR{a^2}&\RR{a^2}&\RR{1}&\RR{0}&\RR{0}&\RR{a^2}\\
+          0&\RR{0}&\RR{a}&\RR{0}&\RR{0}&\RR{0}&\RR{1}&\RR{a^2}&\RR{a^2}&\RR{0}&\RR{a^2}&\RR{a^2}&\RR{1}&\RR{0}&\RR{0}\\
+          0&\RR{a^2}&\RR{0}&\RR{a}&\RR{0}&\RR{0}&\RR{0}&\RR{1}&\RR{0}&\RR{a^2}&\RR{0}&\RR{a^2}&\RR{a^2}&\RR{1}&\RR{0}\\ \hline
+          1&\BB{1}&\BB{a}&\BB{0}&\BB{a^2}&\BB{0}&\BB{0}&\BB{0}&\BB{1}&\BB{a^2}&\BB{0}&\BB{a}&\BB{0}&\BB{0}&\BB{0}\\
+          1&\BB{0}&\BB{1}&\BB{a}&\BB{0}&\BB{a^2}&\BB{0}&\BB{0}&\BB{0}&\BB{1}&\BB{a^2}&\BB{0}&\BB{a}&\BB{0}&\BB{0}\\
+          1&\BB{0}&\BB{0}&\BB{1}&\BB{a}&\BB{0}&\BB{a^2}&\BB{0}&\BB{0}&\BB{0}&\BB{1}&\BB{a^2}&\BB{0}&\BB{a}&\BB{0}\\
+          1&\BB{0}&\BB{0}&\BB{0}&\BB{1}&\BB{a}&\BB{0}&\BB{a^2}&\BB{0}&\BB{0}&\BB{0}&\BB{1}&\BB{a^2}&\BB{0}&\BB{a}\\
+          1&\BB{a^2}&\BB{0}&\BB{0}&\BB{0}&\BB{1}&\BB{a}&\BB{0}&\BB{a}&\BB{0}&\BB{0}&\BB{0}&\BB{1}&\BB{a^2}&\BB{0}\\
+          1&\BB{0}&\BB{a^2}&\BB{0}&\BB{0}&\BB{0}&\BB{1}&\BB{a}&\BB{0}&\BB{a}&\BB{0}&\BB{0}&\BB{0}&\BB{1}&\BB{a^2}\\
+          1&\BB{a}&\BB{0}&\BB{a^2}&\BB{0}&\BB{0}&\BB{0}&\BB{1}&\BB{a^2}&\BB{0}&\BB{a}&\BB{0}&\BB{0}&\BB{0}&\BB{1}\\
+        \end{array}
+      \right)
+    \]
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+    \[
+      \RR{R}=
+      \left(
+        \arraycolsep=2.0pt\def\arraystretch{1.0}
+        \begin{array}{ccccccc|ccccccc}
+          \RR{a}&\RR{a}&\RR{a}&\RR{a}&\RR{a}&\RR{a}&\RR{a}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}\\ \hline
+          \RR{1}&\RR{a^2}&\RR{0}&\RR{a}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{0}&\RR{a^2}&\RR{0}&\RR{a^2}&\RR{a^2}&\RR{1}\\
+          \RR{0}&\RR{1}&\RR{a^2}&\RR{0}&\RR{a}&\RR{0}&\RR{0}&\RR{1}&\RR{0}&\RR{0}&\RR{a^2}&\RR{0}&\RR{a^2}&\RR{a^2}\\
+          \RR{0}&\RR{0}&\RR{1}&\RR{a^2}&\RR{0}&\RR{a}&\RR{0}&\RR{a^2}&\RR{1}&\RR{0}&\RR{0}&\RR{a^2}&\RR{0}&\RR{a^2}\\
+          \RR{0}&\RR{0}&\RR{0}&\RR{1}&\RR{a^2}&\RR{0}&\RR{a}&\RR{a^2}&\RR{a^2}&\RR{1}&\RR{0}&\RR{0}&\RR{a^2}&\RR{0}\\
+          \RR{a}&\RR{0}&\RR{0}&\RR{0}&\RR{1}&\RR{a^2}&\RR{0}&\RR{0}&\RR{a^2}&\RR{a^2}&\RR{1}&\RR{0}&\RR{0}&\RR{a^2}\\
+          \RR{0}&\RR{a}&\RR{0}&\RR{0}&\RR{0}&\RR{1}&\RR{a^2}&\RR{a^2}&\RR{0}&\RR{a^2}&\RR{a^2}&\RR{1}&\RR{0}&\RR{0}\\
+          \RR{a^2}&\RR{0}&\RR{a}&\RR{0}&\RR{0}&\RR{0}&\RR{1}&\RR{0}&\RR{a^2}&\RR{0}&\RR{a^2}&\RR{a^2}&\RR{1}&\RR{0}\\
+        \end{array}
+      \right)
+    \]
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item This suggests the group $C_6 \cong \langle b : b^6=1 \rangle$ where
+    \[
+      b =
+      \left(
+        \arraycolsep=4.0pt\def\arraystretch{1.0}
+        \begin{array}{ccccccc|ccccccc}
+          0&0&0&0&0&0&0&\mathbf{1}&0&0&0&0&0&0\\
+          0&0&0&0&0&0&0&0&\mathbf{1}&0&0&0&0&0\\
+          0&0&0&0&0&0&0&0&0&\mathbf{1}&0&0&0&0\\
+          0&0&0&0&0&0&0&0&0&0&\mathbf{1}&0&0&0\\
+          0&0&0&0&0&0&0&0&0&0&0&\mathbf{1}&0&0\\
+          0&0&0&0&0&0&0&0&0&0&0&0&\mathbf{1}&0\\
+          0&0&0&0&0&0&0&0&0&0&0&0&0&\mathbf{1}\\ \hline
+          \mathbf{a}&0&0&0&0&0&0&0&0&0&0&0&0&0\\
+          0&\mathbf{a}&0&0&0&0&0&0&0&0&0&0&0&0\\
+          0&0&\mathbf{a}&0&0&0&0&0&0&0&0&0&0&0\\
+          0&0&0&\mathbf{a}&0&0&0&0&0&0&0&0&0&0\\
+          0&0&0&0&\mathbf{a}&0&0&0&0&0&0&0&0&0\\
+          0&0&0&0&0&\mathbf{a}&0&0&0&0&0&0&0&0\\
+          0&0&0&0&0&0&\mathbf{a}&0&0&0&0&0&0&0\\
+        \end{array}
+      \right)
+    \]
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item The always exists a $BGW((7^{d+1}-1)/6,7^d,7^d-7^{d-1}; C_6)$.
+    Therefore ...
+  \end{itemize}
+
+  \begin{block}{{\bf Theorem.} New GBRD parameter family}
+    For every $d>0$, there is a simple, quasi-residual $GBRD$ with parameters
+    \[
+      \left(
+        \frac{7^{d+2}-7}{3}, 4 \cdot 7^d, 3 \cdot 7^{d-1}
+      \right)
+    \]
+    over $C_3$.
+  \end{block}
+
+  \begin{exampleblock} {{\bf Question.}}
+    Are these embeddable????
+  \end{exampleblock}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{center}
+    {\huge\bf Done!}
+  \end{center}
+
+\end{frame}
+
+% \begin{frame}{References}
+
+%   \begin{scriptsize}
+%     \begin{itemize}
+%       \setlength{\itemindent}{0.125in}
+%     \item[] Arasu, K.T., Dillon, J. F., Jungnickel, D., \& Pott, A. (1995). The
+%       solution of the Waterloo problem. {\it J. Comb. Theory Ser. A}, {\it 71},
+%       316--331.
+
+%     \item[] Bose, R. C. (1942). An affine analogue of Singer's theorem. {\it J.
+%         Indian Math Soc.}, {\it 6}, 1--15.
+
+%     \item[] Gibbons P. B., \& Mathon, R. A. (1987). Group signings of symmetric
+%       balanced incomplete block designs. {\it J. Ars Combin.}, {\it 23A}, 123--134.
+
+%     \item[] Harwit, M., \& Sloane, N. J. A. (1979). {\it Hadamard transform
+%         optics}. Academic Press: New York.
+
+%     \item[] Ionin, Y. J. (2001). Applying balanced generalized weighing matrices
+%       to construct block designs. {\it The Electron. J. Comb.}, {\it 8}, \#R12.
+
+%     \item[] Jungnickel, D. (1982). On automorphism groups of divisible designs.
+%       {\it Canad. J. Math.}, {\it 34}, 257--297.
+
+%     \item[] Kharaghani, H., Pender, T., \& Sho, S. (2022a). Balanced weighing
+%       matrices. {\it J. Combin. Theory Ser. A}, {\it 186}, Paper No. 105552, 18.
+
+%     \item[] Kharaghani, H., Pender, T., \& Sho, S. (2022b). A family of balanced
+%       generalized weighing matrices. {\it Combinatorica}, {\it 42}(6), 881--894.
+
+%     \item[] MacWilliams, F. J., \& Sloane, N. J. A. (1977). {\it The theory of
+%         error-correcting codes}. Amsterdam: North-Holland.
+
+%     \item[] Singer, J. (1938). A theorem in finite projective geometry and some
+%       applications to number theory. {\it Trans. Amer. Math. Soc.}, {\it 73},
+%       377--385.
+%     \end{itemize}
+%   \end{scriptsize}
+
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% % section -- association schemes
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+% \section{Equivalence to Association Schemes}
+
+% \begin{frame}
+%   \[
+%     \begin{array}{c}
+%       \text{\huge\bf Equivalence to}
+%       \\
+%       \text{\huge\bf Association Schemes}
+%     \end{array}
+%   \]
+% \end{frame}
+
+% \begin{frame}{Section Summary}
+%   \tableofcontents[sections={5}]
+% \end{frame}
+
+% % subsection
+
+% \subsection{Association Schemes}
+
+% \begin{frame}
+
+%   \begin{block}{{\bf Definition} (Commutative) Association Scheme}
+%     A (commutative) association scheme is a pair $\mathfrak{X}=(X,\mathscr{A})$
+%     where:
+%     \begin{itemize}
+%     \item $X$ is a point set and $\mathscr{A}=\{A_0, \dots, A_d\}$ a collection
+%       of $(0,1)$-matrices indexed by elements of $X$.
+%     \item $A_0=I$;
+%     \item $\displaystyle{\sum_{i=0}^d A_i} = J$;
+%     \item $\mathscr{A}$ is closed under transposition;
+%     \item there exist non-negative integers $p_{ij}^k$ such that $A_iA_j =
+%       \displaystyle{\sum_{k=0}^d p_{ij}^kA_k}$; and
+%     \item $A_iA_j=A_jA_i$.
+%     \item[***] $\mathfrak{X}$ is symmetric if $A_i^t=A_i$, for every $i$.
+%     \end{itemize}
+%   \end{block}
+  
+% \end{frame}
+
+% \begin{frame}
+
+%   \begin{itemize}
+%   \item $\mathfrak{U} = \sharps{\mathscr{A}}$ is the adjacency algebra of
+%     $\mathfrak{X}$. 
+%   \item $\mathfrak{U}$ has a dual basis of idempotents $\{E_0=\abs{X}^{-1}J,
+%     \dots, E_d\}$. 
+%   \item There are change of basis matrices $P$ and $Q$ such that
+%     \[
+%       A_j = \sum_{i=0}^d P_{ij}E_i, \qquad
+%       E_j = \abs{X}^{-1}\sum_{i=0}^d Q_{ij}A_i
+%     \]
+%   \end{itemize}
+  
+% \end{frame}
+
+% %subsection
+
+% \subsection{Equivalence to Balanced Weighing Matrices}
+
+% \begin{frame}
+
+%   \begin{itemize}
+%   \item Let $W$ be a $BGW(v,k,\lambda; C_2)$.
+%   \item Decompose...
+%     \[
+%       W = W_1 - W_2,
+%     \]
+%     where $W_1$ and $W_2$ are disjoint $(0,1)$-matrices.
+%   \end{itemize}
+  
+% \end{frame}
+
+% \begin{frame}
+
+%   \begin{itemize}
+%   \item Properties...
+%     \begin{itemize}
+%     \pause\item $(W_1-W_2)(W_1-W_2)^t = (W_1-W_2)^t(W_1-W_2) = kI$
+%     \pause\item $(W_1+W_2)(W_1+W_2)^t = (W_1+W_2)^t(W_1+W_2) = kI +
+%       \lambda(J-I)$
+%     \pause\item $W_1W_1^t + W_2W_2^t = W_1^tW_1 + W_2^tW_2 = kI +
+%     \frac{\lambda}{2}(J-I)$
+%     \pause\item $W_1W_2^t + W_2W_1^t = W_1^tW_2 + W_2^tW_1 =
+%     \frac{\lambda}{2}(J-I)$ 
+%     \end{itemize}
+%   \end{itemize}
+  
+% \end{frame}
+
+% \begin{frame}
+
+%   \begin{itemize}
+%   \item With $P=\left( \begin{smallmatrix} 0&1\\1&0 \end{smallmatrix}
+%     \right)$, form the $(0,1)$-matrices...
+%   \end{itemize}
+
+%   \[
+%     \begin{align*}
+%       \RR{A_0} &= \RR{I_2 \otimes I_2 \otimes I_v} \\
+%       \RR{A_1} &= \RR{I_2 \otimes P \otimes I_v} \\
+%       \RR{A_2} &= \RR{I_2 \otimes J_2 \otimes (J_v - I_v)} \\
+%       \BB{A_3} &= \begin{pmatrix}
+%                O & \BB{I_2 \otimes W_1 + P \otimes W_2} \\
+%                \BB{I_2 \otimes W_1^t + P \otimes W_2^t} & O
+%              \end{pmatrix} \\
+%       \BB{A_4} &= \begin{pmatrix}
+%                O & \BB{I_2 \otimes W_2 + P \otimes W_1} \\
+%                \BB{I_2 \otimes W_2^t + P \otimes W_1^t} & O              
+%              \end{pmatrix} \\
+%       \BB{A_5} &= \begin{pmatrix}
+%                O & \BB{J_2 \otimes (J_v - W_1 - W_2)} \\
+%                \BB{J_2 \otimes (J_v - W_1^t - W_2^t)} & O
+%              \end{pmatrix}
+%     \end{align*}
+%   \]
+  
+% \end{frame}
+
+% \begin{frame}
+
+%   \begin{itemize}
+%   \item Character tables...
+%   \end{itemize}
+
+%   \[
+%     P = \begin{pmatrix}
+%           1 & 1 & 2(v-1) & k & k & 2(v-k) \\
+%           1 & -1 & 0 & \sqrt{k} & -\sqrt{k} & 0 \\
+%           1 & -1 & 0 & -\sqrt{k} & \sqrt{k} & 0 \\
+%           1 & 1 & 2(v-1) & -k & -k & 2(k-v) \\
+%           1 & 1 & -2 & -\sqrt{\frac{k(v-k)}{v-1}} & -\sqrt{\frac{k(v-k)}{v-1}} & 2\sqrt{\frac{k(v-k)}{v-1}} \\
+%           1 & 1 & -2 & \sqrt{\frac{k(v-k)}{v-1}} & \sqrt{\frac{k(v-k)}{v-1}} & -2\sqrt{\frac{k(v-k)}{v-1}}
+%         \end{pmatrix}
+%   \]
+  
+% \end{frame}
+
+% \begin{frame}
+
+%   \[
+%     Q = \begin{pmatrix}
+%           1 & v & v & 1 & v-1 & v-1 \\
+%           1 & -v & -v & 1 & v-1 & v-1 \\
+%           1 & 0 & 0 & 1 & -1 & -1 \\
+%           1 & \frac{v}{\sqrt{k}} & -\frac{v}{\sqrt{k}} & -1 & -\sqrt{\frac{(v-1)(v-k)}{k}} & \sqrt{\frac{(v-1)(v-k)}{k}} \\
+%           1 & -\frac{v}{\sqrt{k}} & \frac{v}{\sqrt{k}} & -1 & -\sqrt{\frac{(v-1)(v-k)}{k}} & \sqrt{\frac{(v-1)(v-k)}{k}} \\
+%           1 & 0 & 0 & -1 & \sqrt{\frac{k(v-1)}{v-k}} & -\sqrt{\frac{k(v-1)}{v-k}}
+%         \end{pmatrix}
+%   \]
+  
+% \end{frame}
+
+% \begin{frame}
+
+%   \begin{block}{{\bf Theorem:} Weighing Schemes \cite[][]{new-bw}}
+%     There is a symmetric scheme with character tables $P$ and $Q$ given above
+%     if and only if there is a balanced $W(v,k)$.
+%   \end{block}
+
+%   \begin{block}{{\bf Proof}}
+%     \begin{itemize}
+%     \item We have sufficiency.
+%     \item To show necessity, use eigenvalues to infer structure of corresponding
+%       graphs/adjacency matrices.
+%     \end{itemize}
+%   \end{block}
+  
+% \end{frame}
+
+% % subsection
+
+% \subsection{Equivalence to Balanced Generalized Weighing Matrices}
+
+% \begin{frame}
+
+%   \begin{itemize}
+%   \item $\left( \begin{smallmatrix} 1&0\\0&1 \end{smallmatrix} \right)$ and
+%     $\left( \begin{smallmatrix} 0&1\\1&0 \end{smallmatrix} \right)$ form a
+%     matrix representation of $C_2$.
+%   \item For a finite abelian group $G=\{g_0,\dots,g_{n-1}\}$ and $h \in G$...
+%     \[
+%       U_h = (\delta(g_i^{-1}hg_j))
+%     \]
+%   \end{itemize}
+  
+% \end{frame}
+
+% \begin{frame}
+
+%   \begin{align*}
+%     A_{0,g} &= I_2 \otimes U_g \otimes I_v \text{, for $g \in G$,} \\
+%     A_1 &= I_2 \otimes J_n \otimes (J_v - I_V), \\
+%     A_{2,g} &= \begin{pmatrix}
+%                  O & \sum_{h \in G} (U_h \otimes W_{gh}) \\
+%                  \sum_{h \in G} (U_h \otimes W_{g^{-1}h^{-1}}^t) & O
+%                \end{pmatrix} \text{, for $g \in G$, and} \\
+%     A_2 &= \begin{pmatrix}
+%              O & J_n \otimes (J_v - \sum_{h \in G} W_h) \\
+%              J_n \otimes (J_v - \sum_{h \in G} W_h^t) & O
+%            \end{pmatrix}.
+%   \end{align*}
+  
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% % section -- references
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+% \begin{frame}{References}
+% \end{frame}
+
+\end{document}
